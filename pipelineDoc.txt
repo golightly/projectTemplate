@@ -1,0 +1,105 @@
+flappy bird doc
+
+installer checks if you have enough space, and asks for your starting resolution and fullscreen/windows/borderless window.
+
+if you do not have enough space, the installer asks you to free up space and the install button is unresponsive/grayed out.
+
+https://msdn.microsoft.com/en-us/library/windows/desktop/aa364935(v=vs.85).aspx
+
+http://www.tenouk.com/cpluscodesnippet/getdiskfreespacex.html
+
+there is a refresh button which prompts the installer to check again.
+
+once there is enough space the installer sets the data in the config file (is installed, window state, and resolution)
+
+
+
+in main game
+
+png = image right after photoshop
+
+run python script to turn image into rgba data
+
+python script runs c++ program
+
+turns rgba data into file of 8bit characters
+
+a program turns all files into one big file
+
+.violent file
+
+runs compression on .violent file
+
+installer decompresses .violent file and asks for resolution to start game at
+
+(.config file saves if installer has been run yet, window state and the resolution to run at)
+
+image = base image from file
+
+apply downscaling, remove base image from memory
+
+tile = image after scaling, contains data and height and width
+
+sprite = contains pointer to tile, and world position x, y, z.
+
+screenElement = pointer to sprite, position on screen.
+
+get whatever rgba values are layered on each pixel of screen space and blend them, including the background into a pixel
+
+pixel: final rgb value
+
+only do this next part until u hit a layer with 255 alpha channel
+
+rgba2 is the bottom layer, rgba1 is on top
+
+test: rgba2: 218, 41, 45, 255   rgba1: 16, 158, 194, 51
+
+outr = 3.2 + 174.4 = 177.6
+
+this agrees with photoshop's result, so this formula works
+
+rOut = (rA * aA / 255) + (rB * aB * (255 - aA) / (255*255))
+gOut = (gA * aA / 255) + (gB * aB * (255 - aA) / (255*255))
+bOut = (bA * aA / 255) + (bB * aB * (255 - aA) / (255*255))
+aOut = aA + (aB * (255 - aA) / 255)
+
+where rA us rgba1 and rB is rgba2
+
+if aOut != 255 use the formula against the background, which is defined elsewhere, but always has 255 alpha.
+
+perform any other operations here (ie. static, noise, colour change etc.)
+
+translate the values to opengl floats and update them into the opengl texture
+
+rOut / 255 = 0.7 rounded
+
+do the rest of the pipeline
+
+detect if anything has changed. ie. any game state updates at all, using a bool.
+
+if so, run the entire operation over again from getting screenElements onward
+
+
+
+cmyk test: light green = r9 g168 b94, c99 m47 y53 k25
+
+
+magenta r113 g49 b82, c53 m90 y47 k25
+
+beige r120 g98 b51, c47 m53 y90 k25
+
+
+test2: brown r145 g104 b98, c39 m59 y55 k15
+
+brownish green r115 g124 b104 c55 m39 y59 k15
+
+brownish purple r109 g104 b118, c59 m55 y39 k15
+
+
+
+these kinds of calculations to be restricted to post-processing, use only rgba/rgb elsewhere
+
+note: ui should be applied after post-processing, even if the ui is semi-transparent
+
+to be done: test around with opengl stuff, should be able to do with no matrix transformations since the texture will always be the size of the window.
+
