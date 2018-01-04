@@ -1,0 +1,16 @@
+text on screen saying left click to flap, everything frozen till you click
+
+at game over a retry button
+
+one background image turned into 6 sprites.  same with the ground sprite.
+
+the background moves faster than the ground, though.
+
+the pipes are 1/2 a tile apart and all have a space 2x as big as the bird between them.
+
+the player scores a point every time they pass the end of a pair of pipes (make sure to trigger this only once, use an invisible collision box that when collided with adds 1 to the score and then moves to the end of the next pipe set (a fixed distance, so it doesn't need to know where the pipes are)
+
+when you get game over, the game stops accepting input except through the two buttons.  make sure the bird can't actually go through the pipes or ground
+
+the score is reset when the player clicks retry
+

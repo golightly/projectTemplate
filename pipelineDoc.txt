@@ -110,7 +110,30 @@ Blue =  1 - minimum(1, Yellow * (1 - Black) + Black)
 
 these kinds of calculations to be restricted to post-processing, use only rgba/rgb elsewhere
 
-note: ui should be applied after post-processing, even if the ui is semi-transparent
+note: ui should be applied after post-processing, even if the ui is semi-transparent.  also ui can be a container for text and images whose positions are stored in relation to the origin (top left corner) of the ui element.
+
+fonts are just an array of images
 
 to be done: test around with opengl stuff, should be able to do with no matrix transformations since the texture will always be the size of the window.
+
+sprites contain a function for rotation
+
+sprites ordinarily use their top left corner as their origin but when they're rotated it toggles a bool that tells the sprite to look at originCentre instead.  the sprite also stores rotationAngle, which is based on the top left corner and the originCentre.  the default position is 0 degrees in this particular system, and the bottom right corner is 180 degrees, and so on, increasing as it goes right (so ie. 90 degrees is the top right corner)
+
+in addition, a rotated sprite stores all of its pixels and its x and y origin in the world as rotatedOrigin
+
+
+^ add this
+
+
+so the algorithm is 
+
+void rotate(float adjust) {
+	if(!rotation) {
+		rotation = true;
+		originCentre.x = origin.x + (w / 2); originCentre.y = origin.y + (h / 2);
+	}
+	angle += adjust;
+	if(angle < 0 && angle 
+}
 
