@@ -130,7 +130,7 @@ bool initGL()
 	//Get vertex source
 	const GLchar* vertexShaderSource[] =
 	{
-		"#version 150\nin vec2 position;  in vec3 color; in vec2 texcoord; out vec3 Color; out vec2 Texcoord; void main() { Color = color; Texcoord = texcoord; gl_Position = vec4(position[0], position[1], 0.0, 1.0);"
+		"#version 150\nin vec2 position;  in vec3 color; in vec2 texcoord; out vec3 Color; out vec2 Texcoord; void main() { Color = color; Texcoord = texcoord; gl_Position = vec4(position, 0.0, 1.0);"
 	};
 
 	//Set vertex source
@@ -160,7 +160,7 @@ bool initGL()
 		//Get fragment source
 		const GLchar* fragmentShaderSource[] =
 		{
-			"#version 150 core\nin vec3 Color; in vec2 TexCoord; out vec4 outColor; uniform sampler2D tex; void main() { outColor = texture(tex, Texcoord) * vec4(Color[0], Color[1], Color[2], 1.0);}"
+			"#version 150 core\nin vec3 Color; in vec2 TexCoord; out vec4 outColor; uniform sampler2D tex; void main() { outColor = vec4(1.0, 1.0, 1.0, 1.0);}"
 		};
 
 		//Set fragment source
@@ -299,7 +299,7 @@ void render()
 		glUseProgram(gProgramID);
 
 		glBindVertexArray(vao);
-		glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_INT, NULL);
+		glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, NULL);
 
 		//Unbind program
 		glUseProgram(NULL);
