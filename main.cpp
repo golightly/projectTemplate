@@ -130,7 +130,7 @@ bool initGL()
 	//Get vertex source
 	const GLchar* vertexShaderSource[] =
 	{
-		"#version 150\nin vec2 position;  in vec3 color; in vec2 texcoord; out vec3 Color; out vec2 Texcoord; void main() { Color = color; Texcoord = texcoord; gl_Position = vec4(position, 0.0, 1.0);"
+		"#version 150\nin vec2 position;  in vec3 color; in vec2 texcoord; out vec3 Color; out vec2 Texcoord; void main() { Color = color; Texcoord = texcoord; gl_Position = vec4(position[0], position[1], 0.0, 1.0);"
 	};
 
 	//Set vertex source
@@ -160,7 +160,7 @@ bool initGL()
 		//Get fragment source
 		const GLchar* fragmentShaderSource[] =
 		{
-			"#version 150 core\nin vec3 Color; in vec2 TexCoord; out vec4 outColor; uniform sampler2D tex; void main() { outColor = texture(tex, Texcoord) * vec4(Color, 1.0);}"
+			"#version 150 core\nin vec3 Color; in vec2 TexCoord; out vec4 outColor; uniform sampler2D tex; void main() { outColor = texture(tex, Texcoord) * vec4(Color[0], Color[1], Color[2], 1.0);}"
 		};
 
 		//Set fragment source
@@ -182,6 +182,8 @@ bool initGL()
 		{
 			//Attach fragment shader to program
 			glAttachShader(gProgramID, fragmentShader);
+
+			glBindFragDataLocation(gProgramID, 0, "outColor");
 
 
 			//Link program
@@ -211,6 +213,7 @@ bool initGL()
 				else
 				{
 					glBindTexture(GL_TEXTURE_2D, texture);
+					glUniform1i(glGetUniformLocation(gProgramID, "tex"), 0);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
@@ -254,12 +257,12 @@ bool initGL()
 					glGenVertexArrays(1, &vao);
 					glBindVertexArray(vao);
 					glEnableVertexAttribArray(gVertexPos2DLocation);
+					glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 					glVertexAttribPointer(gVertexPos2DLocation, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), NULL);
 					glEnableVertexAttribArray(colourAttrib);
 					glVertexAttribPointer(colourAttrib, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(2 * sizeof(float)));
 					glEnableVertexAttribArray(texAttrib);
 					glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(5 * sizeof(float)));
-					glBindBuffer(GL_ARRAY_BUFFER, gVBO);
 					glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gIBO);
 					glBindVertexArray(NULL);
 				}
@@ -296,7 +299,7 @@ void render()
 		glUseProgram(gProgramID);
 
 		glBindVertexArray(vao);
-		glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, NULL);
+		glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_INT, NULL);
 
 		//Unbind program
 		glUseProgram(NULL);
