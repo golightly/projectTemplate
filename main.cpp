@@ -8,27 +8,22 @@
 const GLchar* vertexSource = R"glsl(
     #version 150 core
     in vec2 position;
-    in vec3 color;
     in vec2 texcoord;
-    out vec3 Color;
     out vec2 Texcoord;
     void main()
     {
-        Color = color;
         Texcoord = texcoord;
         gl_Position = vec4(position, 0.0, 1.0);
     }
 )glsl";
 const GLchar* fragmentSource = R"glsl(
     #version 150 core
-    in vec3 Color;
     in vec2 Texcoord;
     out vec4 outColor;
     uniform sampler2D texKitten;
-    uniform sampler2D texPuppy;
     void main()
     {
-        outColor = texture(texKitten, Texcoord), 0.0, 1.0;
+        outColor = texture(texKitten, Texcoord);
     }
 )glsl";
 
@@ -59,11 +54,11 @@ int main(int argc, char* args[])
 	glGenBuffers(1, &vbo);
 
 	GLfloat vertices[] = {
-		//  Position      Color             Texcoords
-		-0.5f,  0.5f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, // Top-left
-		0.5f,  0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // Top-right
-		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, // Bottom-right
-		-0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom-left
+		//  Position  Texcoords
+		-1.0f,  1.0f, 0.0f, 0.0f, // Top-left, texture bottom left
+		1.0f,  1.0f, 1.0f, 0.0f, // Top-right, texture bottom right
+		1.0f, -1.0f, 1.0f, 1.0f, // Bottom-right, texture top right
+		-1.0f, -1.0f, 0.0f, 1.0f  // Bottom-left, texture top right
 	};
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -102,33 +97,29 @@ int main(int argc, char* args[])
 	// Specify the layout of the vertex data
 	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
 	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), 0);
-
-	GLint colAttrib = glGetAttribLocation(shaderProgram, "color");
-	glEnableVertexAttribArray(colAttrib);
-	glVertexAttribPointer(colAttrib, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
+	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
 
 	GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
 	glEnableVertexAttribArray(texAttrib);
-	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (void*)(5 * sizeof(GLfloat)));
+	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
 
 	// Load textures
-	GLuint textures[2];
-	glGenTextures(2, textures);
+	GLuint texture;
+	glGenTextures(1, &texture);
 
 	int width = 800, height = 600;
 	float* image = new float[(width * height) * 3];
 	for (int a = 0; a < (width * height) * 3; ) {
-		image[a] = 0.0f;
-		++a;
 		image[a] = 0.5f;
 		++a;
-		image[a] = 0.7f;
+		image[a] = 1.0f;
+		++a;
+		image[a] = 0.3f;
 		++a;
 	}
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, textures[0]);
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_FLOAT, image);
 	glUniform1i(glGetUniformLocation(shaderProgram, "texKitten"), 0);
 
@@ -137,16 +128,6 @@ int main(int argc, char* args[])
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, textures[1]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_FLOAT, image);
-	delete[] image; image = NULL;
-	glUniform1i(glGetUniformLocation(shaderProgram, "texPuppy"), 1);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	SDL_Event e;
 	bool quit = false;
 
@@ -173,7 +154,7 @@ int main(int argc, char* args[])
 		SDL_GL_SwapWindow(window);
 	}
 
-	glDeleteTextures(2, textures);
+	glDeleteTextures(1, &texture);
 
 	glDeleteProgram(shaderProgram);
 	glDeleteShader(fragmentShader);
