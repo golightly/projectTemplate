@@ -28,7 +28,7 @@ const GLchar* fragmentSource = R"glsl(
     uniform sampler2D texPuppy;
     void main()
     {
-        outColor = mix(texture(texKitten, Texcoord), texture(texPuppy, Texcoord), 0.5);
+        outColor = texture(texKitten, Texcoord), 0.0, 1.0;
     }
 )glsl";
 
