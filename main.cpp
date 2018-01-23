@@ -7,6 +7,7 @@
 #include <SDL_opengl.h>
 #include <gl\glu.h>
 #include "overhead.h"
+#include "texAttribute.h"
 
 
 // Shader sources
@@ -34,42 +35,13 @@ const GLchar* fragmentSource = R"glsl(
 
 int main(int argc, char* args[])
 {
-	SDL_Window* window = NULL;
-	SDL_GLContext context;
+	Overhead overhead;
 
-	overhead(window, context);
+	setupOverhead(overhead);
 
-	// Create Vertex Array Object
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	TexAttribute texAttribute;
 
-	// Create a Vertex Buffer Object and copy the vertex data to it
-	GLuint vbo;
-	glGenBuffers(1, &vbo);
-
-	GLfloat vertices[] = {
-		//  Position  Texcoords
-		-1.0f,  1.0f, 0.0f, 0.0f, // Top-left, texture bottom left
-		1.0f,  1.0f, 1.0f, 0.0f, // Top-right, texture bottom right
-		1.0f, -1.0f, 1.0f, 1.0f, // Bottom-right, texture top right
-		-1.0f, -1.0f, 0.0f, 1.0f  // Bottom-left, texture top right
-	};
-
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	// Create an element array
-	GLuint ebo;
-	glGenBuffers(1, &ebo);
-
-	GLuint elements[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
+	setupTexAttribute(texAttribute);
 
 	// Create and compile the vertex shader
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -156,7 +128,7 @@ int main(int argc, char* args[])
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		// Swap buffers
-		SDL_GL_SwapWindow(window);
+		SDL_GL_SwapWindow(overhead.window);
 	}
 
 	glDeleteTextures(1, &texture);
@@ -165,13 +137,16 @@ int main(int argc, char* args[])
 	glDeleteShader(fragmentShader);
 	glDeleteShader(vertexShader);
 
-	glDeleteBuffers(1, &ebo);
-	glDeleteBuffers(1, &vbo);
+	glDeleteBuffers(1, &texAttribute.ebo);
+	glDeleteBuffers(1, &texAttribute.vbo);
 
-	glDeleteVertexArrays(1, &vao);
+	glDeleteVertexArrays(1, &texAttribute.vao);
 
-	SDL_DestroyWindow(window);
-	window = NULL;
+	delete[] texAttribute.vertices;
+	delete[] texAttribute.elements;
+
+	SDL_DestroyWindow(overhead.window);
+	overhead.window = NULL;
 
 	SDL_Quit();
 
