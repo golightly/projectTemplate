@@ -8,30 +8,8 @@
 #include <gl\glu.h>
 #include "overhead.h"
 #include "texAttribute.h"
+#include "shader.h"
 
-
-// Shader sources
-const GLchar* vertexSource = R"glsl(
-    #version 150 core
-    in vec2 position;
-    in vec2 texcoord;
-    out vec2 Texcoord;
-    void main()
-    {
-        Texcoord = texcoord;
-        gl_Position = vec4(position, 0.0, 1.0);
-    }
-)glsl";
-const GLchar* fragmentSource = R"glsl(
-    #version 150 core
-    in vec2 Texcoord;
-    out vec4 outColor;
-    uniform sampler2D texSampler;
-    void main()
-    {
-        outColor = texture(texSampler, Texcoord);
-    }
-)glsl";
 
 int main(int argc, char* args[])
 {
@@ -43,33 +21,8 @@ int main(int argc, char* args[])
 
 	setupTexAttribute(texAttribute);
 
-	// Create and compile the vertex shader
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vertexSource, NULL);
-	glCompileShader(vertexShader);
-
-	// Create and compile the fragment shader
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-	glCompileShader(fragmentShader);
-
-	// Link the vertex and fragment shader into a shader program
-	GLuint shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	glBindFragDataLocation(shaderProgram, 0, "outColor");
-	glLinkProgram(shaderProgram);
-	glUseProgram(shaderProgram);
-
-	// Specify the layout of the vertex data
-	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
-	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
-
-	GLint texAttrib = glGetAttribLocation(shaderProgram, "texcoord");
-	glEnableVertexAttribArray(texAttrib);
-	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));
-
+	Shader shader(getVertexSource(), getFragmentSource());
+	setupShader(shader);
 	// Load textures
 	GLuint texture;
 	glGenTextures(1, &texture);
@@ -98,7 +51,7 @@ int main(int argc, char* args[])
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_FLOAT, image);
-	glUniform1i(glGetUniformLocation(shaderProgram, "texSampler"), 0);
+	glUniform1i(glGetUniformLocation(shader.shaderProgram, "texSampler"), 0);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -133,9 +86,9 @@ int main(int argc, char* args[])
 
 	glDeleteTextures(1, &texture);
 
-	glDeleteProgram(shaderProgram);
-	glDeleteShader(fragmentShader);
-	glDeleteShader(vertexShader);
+	glDeleteProgram(shader.shaderProgram);
+	glDeleteShader(shader.fragmentShader);
+	glDeleteShader(shader.vertexShader);
 
 	glDeleteBuffers(1, &texAttribute.ebo);
 	glDeleteBuffers(1, &texAttribute.vbo);
