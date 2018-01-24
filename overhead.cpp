@@ -3,6 +3,9 @@
 #include <SDL_opengl.h>
 #include <gl\glu.h>
 #include "overhead.h"
+#include "texAttribute.h"
+#include "shader.h"
+#include "texture.h"
 
 void setupOverhead(Overhead &overhead) {
 	overhead.window = NULL;
@@ -17,4 +20,25 @@ void setupOverhead(Overhead &overhead) {
 	glewExperimental = GL_TRUE;
 	glewInit();
 	SDL_GL_SetSwapInterval(1);
+}
+
+void shutdown(Overhead &overhead, GLuint &texture, Shader &shader, TexAttribute &texAttribute) {
+	glDeleteTextures(1, &texture);
+
+	glDeleteProgram(shader.shaderProgram);
+	glDeleteShader(shader.fragmentShader);
+	glDeleteShader(shader.vertexShader);
+
+	glDeleteBuffers(1, &texAttribute.ebo);
+	glDeleteBuffers(1, &texAttribute.vbo);
+
+	glDeleteVertexArrays(1, &texAttribute.vao);
+
+	delete[] texAttribute.vertices;
+	delete[] texAttribute.elements;
+
+	SDL_DestroyWindow(overhead.window);
+	overhead.window = NULL;
+
+	SDL_Quit();
 }

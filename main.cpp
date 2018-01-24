@@ -48,25 +48,6 @@ int main(int argc, char* args[])
 		// Swap buffers
 		SDL_GL_SwapWindow(overhead.window);
 	}
-
-	glDeleteTextures(1, &texture);
-
-	glDeleteProgram(shader.shaderProgram);
-	glDeleteShader(shader.fragmentShader);
-	glDeleteShader(shader.vertexShader);
-
-	glDeleteBuffers(1, &texAttribute.ebo);
-	glDeleteBuffers(1, &texAttribute.vbo);
-
-	glDeleteVertexArrays(1, &texAttribute.vao);
-
-	delete[] texAttribute.vertices;
-	delete[] texAttribute.elements;
-
-	SDL_DestroyWindow(overhead.window);
-	overhead.window = NULL;
-
-	SDL_Quit();
-
+	shutdown(overhead, texture, shader, texAttribute);
 	return 0;
 }
