@@ -10,7 +10,6 @@ const GLchar* getFragmentSource();
 
 struct Shader {
 	Shader(const GLchar* vertSource, const GLchar* fragSource) : vertexSource(vertSource), fragmentSource(fragSource) {}
-	// Shader sources
 	const GLchar* vertexSource;
 	const GLchar* fragmentSource;
 	GLuint vertexShader, fragmentShader, shaderProgram;

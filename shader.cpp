@@ -33,29 +33,21 @@ const GLchar* getVertexSource() {
 }
 
 void setupShader(Shader &shader) {
-	// Create and compile the vertex shader
 	shader.vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(shader.vertexShader, 1, &shader.vertexSource, NULL);
 	glCompileShader(shader.vertexShader);
-
-	// Create and compile the fragment shader
 	shader.fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(shader.fragmentShader, 1, &shader.fragmentSource, NULL);
 	glCompileShader(shader.fragmentShader);
-
-	// Link the vertex and fragment shader into a shader program
 	shader.shaderProgram = glCreateProgram();
 	glAttachShader(shader.shaderProgram, shader.vertexShader);
 	glAttachShader(shader.shaderProgram, shader.fragmentShader);
 	glBindFragDataLocation(shader.shaderProgram, 0, "outColor");
 	glLinkProgram(shader.shaderProgram);
 	glUseProgram(shader.shaderProgram);
-
-	// Specify the layout of the vertex data
 	shader.posAttrib = glGetAttribLocation(shader.shaderProgram, "position");
 	glEnableVertexAttribArray(shader.posAttrib);
 	glVertexAttribPointer(shader.posAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
-
 	shader.texAttrib = glGetAttribLocation(shader.shaderProgram, "texcoord");
 	glEnableVertexAttribArray(shader.texAttrib);
 	glVertexAttribPointer(shader.texAttrib, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (void*)(2 * sizeof(GLfloat)));

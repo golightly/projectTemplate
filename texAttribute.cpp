@@ -9,7 +9,6 @@ void setupTexAttribute(TexAttribute &texAttribute) {
 	glBindVertexArray(texAttribute.vao);
 	glGenBuffers(1, &texAttribute.vbo);
 	texAttribute.vertices = new GLfloat[16]{
-		//  Position  Texcoords
 		-1.0f,  1.0f, 0.0f, 0.0f, // Top-left, texture bottom left
 		1.0f,  1.0f, 1.0f, 0.0f, // Top-right, texture bottom right
 		1.0f, -1.0f, 1.0f, 1.0f, // Bottom-right, texture top right
