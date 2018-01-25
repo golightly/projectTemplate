@@ -4,4 +4,6 @@
 #include <gl\glu.h>
 #include "shader.h"
 
-void setupTexture(GLuint &texture, Shader &shader, int &width, int &height);
+void setupTexture(GLuint &texture, Shader &shader, int &width, int &height, float* &image);
+
+void updateTexture(GLuint &texture, Shader &shader, int &width, int &height, float* image);

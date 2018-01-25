@@ -19,8 +19,9 @@ int main(int argc, char* args[])
 	Shader shader(getVertexSource(), getFragmentSource());
 	setupShader(shader);
 	GLuint texture;
+	float* image;
 	int width = 800, height = 600;
-	setupTexture(texture, shader, width, height);
+	setupTexture(texture, shader, width, height, image);
 	SDL_Event e;
 	bool quit = false;
 	while (!quit) {
@@ -31,9 +32,11 @@ int main(int argc, char* args[])
 		}
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+		updateTexture(texture, shader, width, height, image);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		SDL_GL_SwapWindow(overhead.window);
 	}
+	delete[] image;
 	shutdown(overhead, texture, shader, texAttribute);
 	return 0;
 }

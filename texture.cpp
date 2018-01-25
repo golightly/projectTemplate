@@ -3,9 +3,9 @@
 #include <gl\glu.h>
 #include "shader.h"
 
-void setupTexture(GLuint &texture, Shader &shader, int &width, int &height) {
+void setupTexture(GLuint &texture, Shader &shader, int &width, int &height, float* &image) {
 	glGenTextures(1, &texture);
-	float* image = new float[(width * height) * 3];
+	image = new float[(width * height) * 3];
 	for (int a = 0; a < (width * height) * 3; ) {
 		if (a < ((width * height) * 3) / 2) {
 			image[a] = 0.5f;
@@ -32,5 +32,38 @@ void setupTexture(GLuint &texture, Shader &shader, int &width, int &height) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	delete[] image;
+}
+
+void updateTexture(GLuint &texture, Shader &shader, int &width, int &height, float* image) {
+	for (int a = 0; a < (width * height) * 3; ) {
+		if (a < ((width * height) * 3) / 2) {
+			image[a] += 0.1f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+			image[a] += 0.2f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+			image[a] += 0.3f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+		}
+		else {
+			image[a] += 0.1f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+			image[a] += 0.5f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+			image[a] += 0.7f;
+			if (image[a] > 1.0f)
+				image[a] = 0.0f;
+			++a;
+		}
+	}
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, GL_RGB, GL_FLOAT, image);
 }
