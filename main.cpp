@@ -20,7 +20,7 @@ int main(int argc, char* args[])
 	setupShader(shader);
 	GLuint texture;
 	float* image;
-	int width = 800, height = 600;
+	int width = 1000, height = 1000;
 	setupTexture(texture, shader, width, height, image);
 	SDL_Event e;
 	bool quit = false;

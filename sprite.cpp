@@ -1,11 +1,15 @@
 #include <math.h>
 #include "sprite.h"
-void setupSprite(Sprite &sprite, int xo, int yo, int ang, bool rot) {
-	sprite.angle = ang;
-	sprite.xOrigin = xo;
-	sprite.yOrigin = yo;
+
+#define PI 3.14159265
+
+void setupSprite(Sprite &sprite, int xo, int yo, int ang, bool rot, int lay) {
+	sprite.angle = (double)ang;
+	sprite.layer = lay;
+	sprite.origin.x = xo;
+	sprite.origin.y = yo;
 	sprite.rotate = rot;
-	//temp code, will get data from hard drive later
+	//temp code, will get data from hard drive later and store image separately
 	sprite.width = 800;
 	sprite.height = 600;
 	sprite.rgba = new float*[sprite.width * sprite.height];
@@ -22,13 +26,50 @@ void setupSprite(Sprite &sprite, int xo, int yo, int ang, bool rot) {
 		}
 	}
 	if (sprite.rotate) {
-		sprite.positionSize = (int)sqrt((sprite.width * 2) + (sprite.height * 2));
-		if (sprite.positionSize % 2 == 0)
-			++sprite.positionSize;
-		sprite.position = new Position*[sprite.positionSize];
-		for (int a = 0; a < sprite.positionSize; ++a) {
-			sprite.position[a] = new Position[sprite.positionSize];
+		sprite.positionSpan = (int)sqrt((sprite.width * sprite.width) + (sprite.height * sprite.height));
+		sprite.rOrigin.x = sprite.width / 2; sprite.rOrigin.y = sprite.height / 2;
+		sprite.position = new Position*[sprite.width];
+		for (int a = 0; a < sprite.width; ++a) {
+			sprite.position[a] = new Position[sprite.height];
 		}
 		//calculate rotated position of every pixel in rgba and place them in position
+		rotateSprite(sprite);
+	}
+}
+
+void rotateSprite(Sprite &sprite) {
+	double sideA, sideB, sideC, angle;
+	for (int a = 0; a < sprite.width; ++a) { //thru x axis of sprite
+		for (int b = 0; b < sprite.height; ++b) { //thru y axis of sprite
+			//get hypotenuse
+			sideC = sqrt(((-sprite.rOrigin.x + a) * (-sprite.rOrigin.x + a)) + ((-sprite.rOrigin.y + b) * (-sprite.rOrigin.y + b)));
+			//get angle of point from origin at centre of sprite
+			angle = asin((-sprite.rOrigin.y + b) / sideC) * (180 / PI);
+			if (angle < 0) { angle *= -1; } //block-start:make angle positive and <= 90
+			if (a <= sprite.rOrigin.x) {
+				if (b <= sprite.rOrigin.y)//sprite.angle modifies the original angle of the point
+					angle -= sprite.angle;
+				else if (b > sprite.rOrigin.y)
+					angle += sprite.angle;
+			}
+			else if (a > sprite.rOrigin.x) {
+				if (b <= sprite.rOrigin.y)
+					angle += sprite.angle;
+				else if (b > sprite.rOrigin.y)
+					angle -= sprite.angle;
+			}
+			if (angle < 0) { angle *= -1; }
+			if (angle > 90) { angle -= 90; }//block-end
+			sideB = sideC * (sin(angle) * (180 / PI)); //get y of rotated point
+			if (sideB < 0 && b > sprite.rOrigin.y)
+				sideB *= -1;
+			else if (sideB > 0 && b > sprite.rOrigin.y)
+				sideB *= -1;
+			sideA = sideC * (cos(angle) * (180 * PI)); //get x of rotated point
+			sideB += (double)sprite.rOrigin.y;
+			sideA += (double)sprite.rOrigin.x;
+			sprite.position[a][b].point.x = (int)sideA;
+			sprite.position[a][b].point.y = (int)sideB;
+		}
 	}
 }
