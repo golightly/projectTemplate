@@ -28,10 +28,12 @@ void setupSprite(Sprite &sprite, int xo, int yo, int ang, bool rot, int lay) {
 	if (sprite.rotate) {
 		sprite.positionSpan = (int)sqrt((sprite.width * sprite.width) + (sprite.height * sprite.height));
 		sprite.rOrigin.x = sprite.width / 2; sprite.rOrigin.y = sprite.height / 2;
-		sprite.position = new Position*[sprite.width];
+		sprite.position = new Point*[sprite.width];
 		for (int a = 0; a < sprite.width; ++a) {
-			sprite.position[a] = new Position[sprite.height];
+			sprite.position[a] = new Point[sprite.height];
 		}
+		sprite.positionOrigin.x = sprite.origin.x - ((sprite.positionSpan - sprite.width) / 2);
+		sprite.positionOrigin.y = sprite.origin.y - ((sprite.positionSpan - sprite.height) / 2);
 		//calculate rotated position of every pixel in rgba and place them in position
 		rotateSprite(sprite);
 	}
@@ -68,8 +70,8 @@ void rotateSprite(Sprite &sprite) {
 			sideA = sideC * (cos(angle) * (180 * PI)); //get x of rotated point
 			sideB += (double)sprite.rOrigin.y;
 			sideA += (double)sprite.rOrigin.x;
-			sprite.position[a][b].point.x = (int)sideA;
-			sprite.position[a][b].point.y = (int)sideB;
+			sprite.position[a][b].x = ((int)sideA) + sprite.rOrigin.x;
+			sprite.position[a][b].y = ((int)sideB) + sprite.rOrigin.y;
 		}
 	}
 }

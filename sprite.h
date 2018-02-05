@@ -4,17 +4,12 @@ struct Point {
 	int x, y;
 };
 
-struct Position {
-	int rgbaIndex;
-	Point point;
-};
-
 struct Sprite {
 	float** rgba;
-	Position** position; /*a rectangle: index of rgba value (-1 means not part of the image)
-					x relative to xOrigin, y relative to yOrigin. use the rotated
-					attributes to navigate through array*/
-	Point rOrigin, origin;
+	Point** position; /*a rectangle: x relative to positionOrigin, 
+					  y relative to positionOrigin. each pixel is in the same [a][b] index
+					  as in the image, and contains the rotated position*/
+	Point rOrigin, origin, positionOrigin;
 	bool rotate;
 	int width, height, layer, positionSpan;
 	double angle;
