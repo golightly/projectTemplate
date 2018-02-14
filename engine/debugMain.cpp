@@ -1,4 +1,6 @@
 //next phase: setup(either start a new project or continue one, done on command line)
+//organize this mess in visual studio
+//FIX 2D ARRAYS, should be pointers in the first dimension
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -6,79 +8,22 @@
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
-
-struct Overhead {
-    SDL_Window* window;
-    int imgLoad, w, h;
-    SDL_Renderer* renderer;
-};
-
-struct Texture {
-    SDL_Texture** texture;
-    int textureNum;
-    int* w; int* h;
-};
-
-struct Sprite {
-    int textureIndex;
-    SDL_Rect attributes;
-};
-
-void setupOverhead(Overhead &overhead, int w, int h) {
-    SDL_Init(SDL_INIT_VIDEO);
-    overhead.w = w; overhead.h = h;
-    overhead.window = SDL_CreateWindow("Trashviolent SDK", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, overhead.w, overhead.h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-    overhead.imgLoad = IMG_INIT_PNG; IMG_Init(overhead.imgLoad);
-    overhead.renderer = SDL_CreateRenderer(overhead.window, -1, SDL_RENDERER_ACCELERATED);
-    SDL_SetRenderDrawColor(overhead.renderer, 0, 0, 0, 0);
-}
-
-void close(Overhead &overhead, Texture &texture) {
-    for(int a = 0; a < texture.textureNum; ++a) {
-        SDL_DestroyTexture(texture.texture[a]);
-    }
-    SDL_DestroyRenderer(overhead.renderer);
-    SDL_DestroyWindow(overhead.window);
-    IMG_Quit();
-    SDL_Quit();
-}
-
-void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string path) {
-    SDL_Surface* surface = IMG_Load(patch.c_str());
-    if(texture != NULL) {
-        SDL_DestroyTexture(texture);
-        texture = NULL;
-    }
-    texture = SDL_CreateTextureFromSurface(overhead.renderer, surface);
-    SDL_FreeSurface(surface);
-}
-
-void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int &pathNum) {
-    texture.texture = new SDL_Texture[pathNum];
-    texture.w = new int[pathNum]; texture.h = new int[pathNum];
-    for(int a = 0; a < pathNum; ++a) {
-        innerSetupTexture(overhead, texture.texture[a], path[a]);
-        texture.w[a] = w[a]; texture.h[a] = h[a];
-    }
-}
-
-void setupSprite(Sprite &sprite, int w, int h, int x, int y, int textureIndex) {
-    sprite.textureIndex = textureIndex;
-    sprite.attributes.w = w; sprite.attributes.h = h; 
-    sprite.attributes.x = x; sprite.attributes.y = y;
-}
-
-//renders one sprite per function call
-void render(Overhead &overhead, Texture &texture, Sprite &sprite) {
-    SDL_Rect renderQuad = { sprite.attributes.x, sprite.attributes.y, sprite.attributes.w, sprite.attributes.h };
-    SDL_RenderCopy(overhead.renderer, texture.texture[sprite.textureIndex], &overhead.attributes, &renderQuad);
-}
+#include "funcPointer.h"
+#include "overhead.h"
+#include "texture.h"
+#include "sprite.h"
+#include "image.h"
+#include "scene.h"
+#include "render.h"
 
 int main(int argc, char* args[]) {
     std::ifstream file;
     std::string input, path, programName, programType;
-    std::string* scenePath; 
-    SDL_Rect* sceneAttributes;
+    std::string* scenePath;
+    int sceneNum = 0;
+    int imageNum = 0;
+    Scene* scene = NULL;
+    Image* image = NULL;
     std::cout << "Trashviolent SDK\n";
     std::cout << "new project: n projectFolder/myProject.project\ncontinue: c projectFolder/myProject.project" << std::endl;
     std::cout << "$"; std::getline(std::cin, input);
@@ -97,10 +42,64 @@ int main(int argc, char* args[]) {
         file.open(path.c_str());
         std::getline(file, programName);
         std::getline(file, programType);
+        std::getline(file, input);
+        sceneNum = atoi(input.c_str());
+        std::getline(file, input);
+        imageNum = atoi(inut.c_str());
+        scene = new Scene[sceneNum];
+        image = new Image[imageNum];
+        for(int a = 0; a < imageNum; ++a) {
+            setupImage(file, image[a], input);
+        }
+        for(int a = 0; a < sceneNum; ++a) { //for every scene saved so far
+            setupScene(file, scene[a], input, image);
+        }
         file.close();
         file.clear();
     }
-    
+    bool quitSDK = false;
+    while(!quitSDK) {
+        std::cout << programName << std::endl;
+        std::cout << "scene#" << sceneNum << " image#" << imageNum << std::endl;
+        std::cout << "type help for command list" << std::endl;
+        std::cout << "$";
+        std::cin << input;
+        if(input == "help") {
+            std::cout << "list-scene: lists scene names and paths" << std::endl;
+            std:;cout << "list-image: lists image paths" << std::endl;
+            std::cout << "add-image-<path>: adds image from the specified path" << std::endl;
+            std::cout << "rm-image-<index number>: removes the image at this index of\n\tthe array and adjusts the array and image number" << std::endl;
+            std::cout << "rm-scene-<index number>: likewise, for a scene" << std::endl;
+            std::cout << "add-scene-<path>: asks for scene basic stuff and creates" << std::endl;
+            std::cout << "exit: exits the program" << std::endl;
+            std::cout << "save: saves everything" << std::endl;
+            std::cout << "open-<scene index number>: opens scene in sdl window for editing" << std::endl;
+            std::cout << "open-<scene name>: does the same thing" << std::endl;
+            std::cout << "open-<scene path>: see above" << std::endl;
+        }
+        else if(input == "exit") {
+            for(int a = 0; a < sceneNum; ++a) {
+                for(int b = 0; b < scene[a].spawnGroupNum; ++b) {
+                    delete [] scene[a].spawnArea[b];
+                }
+                delete [] scene[a].spawnArea;
+                delete [] scene[a].collisionAttributes;
+                for(int b = 0; b < scene[a].sceneImageNum; ++b) {
+                    delete [] scene[a].spriteAttributes[b];
+                }
+                delete [] scene[a].spriteAttributes;
+                delete [] scene[a].spritePerTexture;
+                delete [] scene[a].image;
+            }
+            if(scene != NULL)
+                delete [] scene;
+            if(image != NULL)
+                delete [] image;
+            quitSDK = true;
+        }
+        //add more here IMPORTANT
+        //the main function will end shortly after this, the sdl part is a separate function obviously
+    }
     
     //divider between real code ^ and test sdl code below
     Overhead overhead; setupOverhead(overhead, 800, 600);

@@ -1,0 +1,16 @@
+#pragma once
+
+#include <string>
+#include <SDL.h>
+#include <SDL_image.h>
+#include "overhead.h"
+
+struct Texture {
+    SDL_Texture** texture;
+    int textureNum;
+    int* w; int* h;
+};
+
+void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string path);
+
+void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int &pathNum);
