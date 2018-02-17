@@ -19,4 +19,4 @@ struct Scene {
     //to be added, characters, and other stuff I'm sure
 };
 
-void setupScene(std::ifsteam &file, Scene &scene, std::string &input, Image* image);
+void setupScene(std::ifsteam &file, Scene &scene, std::string &input, Image* image, std::string &scenePath);

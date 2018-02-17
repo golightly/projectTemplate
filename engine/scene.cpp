@@ -6,8 +6,9 @@
 #include <stdlib.h>
 #include "image.h"
 
-void setupScene(std::ifsteam &file, Scene &scene, std::string &input, Image* image) {
+void setupScene(std::ifsteam &file, Scene &scene, std::string &input, Image* image, std::string &scenePath) {
     std::getline(file, scene.sceneName);
+    std::getline(file, scenePath);
     std::getline(file, scene.functionName);
     std::getline(file, input);
     scene.sceneAttributes.w = atoi(input.c_str());
