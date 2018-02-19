@@ -2,4 +2,4 @@
 
 #include "program.h"
 
-void newContinueSDK.h(Program &program);
+void newContinueSDK(Program &program);

@@ -9,6 +9,6 @@ struct Overhead {
     SDL_Renderer* renderer;
 };
 
-void setupOverhead(verhead &overhead, int w, int h);
+void setupOverhead(Overhead &overhead, int w, int h);
 
 void close(Overhead &overhead, Texture &texture);

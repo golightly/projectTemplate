@@ -30,7 +30,8 @@ int main(int argc, char* args[]) {
     
     
     //divider between real code ^ and test sdl code below
-    Overhead overhead; setupOverhead(overhead, 800, 600);
+    Overhead overhead; 
+	setupOverhead(overhead, 800, 600);
     int spriteNum = 8; //these will both be heavily overhauled too
     int* spriteTextureIndex = new int[spriteNum];
     file.open(path);

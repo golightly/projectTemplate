@@ -1,8 +1,9 @@
 #include "printHelp.h"
+#include <iostream>
 
 void printHelp() {
     std::cout << "list-scene: lists scene names" << std::endl;
-    std:;cout << "list-image: lists image names and paths" << std::endl;
+    std::cout << "list-image: lists image names and paths" << std::endl;
     std::cout << "add-image-<path>: adds image from the specified path" << std::endl;
     std::cout << "rm-image-<index number>: removes the image at this index of\n\tthe array and adjusts the array and image number" << std::endl;
     std::cout << "rm-scene-<index number>: likewise, for a scene" << std::endl;

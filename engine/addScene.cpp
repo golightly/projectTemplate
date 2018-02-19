@@ -16,7 +16,7 @@ void addScene(Program &program) {
         delete program.scenePath;
         delete program.sceneName;
         program.scenePath = new std::string[program.sceneNum];
-        program.sceneName = new std:;string[program.sceneNum];
+        program.sceneName = new std::string[program.sceneNum];
         for(int a = 0; a < (program.sceneNum - 1); ++a) {
             program.scenePath[a] = temp[a];
             program.sceneName[a] = temp2[a];
@@ -27,8 +27,7 @@ void addScene(Program &program) {
         program.sceneName = new std::string[program.sceneNum];
     }
     std::cout << "Scene path: ";
-    std::getline(std::cin, program.scenePath[sceneNum - 1]);
+    std::getline(std::cin, program.scenePath[program.sceneNum - 1]);
     std::cout << "Scene name: ";
-    std::getline(std::cin, program.sceneName[sceneNum - 1]);
-    }
+    std::getline(std::cin, program.sceneName[program.sceneNum - 1]);
 }

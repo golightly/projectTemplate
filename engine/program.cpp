@@ -35,7 +35,7 @@ void setupProgram(Program &program) {
             std::getline(program.readFile, program.sceneName[a]);
         }
         for(int a = 0; a < program.sceneNum; ++a) {
-            std::getline(program.readFile, program.scenePath);
+            std::getline(program.readFile, program.scenePath[a]);
         }
         program.readFile.close();
         program.readFile.clear();

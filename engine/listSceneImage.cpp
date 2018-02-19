@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
+#include <iostream>
 #include "program.h"
 #include "scene.h"
 #include "image.h"
