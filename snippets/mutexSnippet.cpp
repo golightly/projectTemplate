@@ -7,19 +7,24 @@
 
 std::mutex mu;
 
-bool accessData() {
+void accessData() {
   mu.lock();
-  return true;
+}
+
+void accessComplete() {
+  mu.unlock();
 }
 
 void printSomething(char a) {
-  if(accessData)
-    std::cout << "print a thing: " << a;
+  accessData();
+  std::cout << "print a thing: " << a;
+  accessComplete();
 }
 
 void printSomethingElse() {
-  if(accessData)
-    std::cout << "print a different thing";
+  accessData();
+  std::cout << "print a different thing";
+  accessComplete();
 }
 
 int main() {
