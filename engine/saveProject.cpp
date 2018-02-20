@@ -23,3 +23,4 @@ void saveProject(Program &program) {
   program.writeFile.close();
   program.writeFile.clear();
 }
+//split up setupScene next
