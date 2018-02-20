@@ -1,4 +1,4 @@
-#include "sceneImageNum.h"
+#include "sceneImageNumSprite.h"
 #include <fstream>
 #include <iostream>
 #include <string>
