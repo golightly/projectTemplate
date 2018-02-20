@@ -11,5 +11,4 @@ void printHelp() {
     std::cout << "exit: exits the program" << std::endl;
     std::cout << "save: saves project (scenes are saved in scene editor)" << std::endl;
     std::cout << "open-<scene index number>: opens scene in sdl window for editing" << std::endl;
-    std::cout << "open-<scene name>: does the same thing" << std::endl;
 }
