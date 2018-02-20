@@ -14,7 +14,7 @@ struct Program {
     int sceneNum, imageNum;
     Scene* scene;
     Image* image;
-	char* memblock;
+    char* memblock;
 };
 
 void setupProgram(Program &program);
