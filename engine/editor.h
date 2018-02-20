@@ -6,7 +6,7 @@
 
 //put all the sdl and scene editing stuff here
 struct Editor {
-  Overhead GUIoverhead, mouseOverhead;
+  Overhead GUIOverhead, mouseOverhead;
   int windowWidth, windowHeight;
   std::string savePath;
   SDL_Event event;
