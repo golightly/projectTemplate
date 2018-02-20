@@ -15,5 +15,4 @@ void setupOverhead(Overhead &overhead, int w, int h, std::string windowName) {
 void closeOverhead(Overhead &overhead) {
     SDL_DestroyRenderer(overhead.renderer);
     SDL_DestroyWindow(overhead.window);
-    SDL_Quit();
 }
