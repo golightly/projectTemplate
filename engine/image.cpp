@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include "program.h"
 
+//sets up one image at a time
 void setupImage(Program &program, Image &image) {
     std::getline(program.readFile, image.name);
     std::getline(program.readFile, image.path);
