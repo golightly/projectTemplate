@@ -9,8 +9,8 @@ struct Scene {
     SDL_Rect sceneAttributes; //attributes of the scene itself
     int sceneImageNum; //number of images/texture required for the scene
     int* image; //images required for the scene, size is number of textures, holds the id of the image in the image array
-    int* spritePerTexture; //number of sprites of each texture required for this scene
-    SDL_Rect** spriteAttributes;
+    int* spritePerTexture; //number of sprites of each texture required for this scene, corresponds to the index of image ^
+    SDL_Rect* spriteAttributes;
     int collisionNum; //number of collision boxes in the scene
     SDL_Rect* collisionAttributes; //all collision boxes for the scene
     int spawnGroupNum, spawnGroupSize; //see below
