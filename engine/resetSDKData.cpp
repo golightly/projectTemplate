@@ -9,12 +9,9 @@ void resetSDKData(Program &program) {
             delete [] program.scene.spawnArea[a];
         }
         delete [] program.scene.spawnArea;
+        delete [] program.scene.spawnGroupSize;
         delete [] program.scene.collisionAttributes;
-        for(int a = 0; a < program.scene.sceneImageNum; ++a) {
-            delete [] program.scene.spriteAttributes[a];
-        }
-        delete [] program.scene.spriteAttributes;
-        delete [] program.scene.spritePerTexture;
+        delete [] sprite;
         delete [] program.scene.image;
         delete program.scene;
     }
