@@ -7,7 +7,7 @@
 #include "program.h"
 #include "sprite.h"
 
-void sceneImageNum(Program &program) {
+void sceneImageNumSprite(Program &program) {
   std::getline(program.readFile, program.input);
   program.scene.sceneImageNum = atoi(program.input.c_str());
   program.scene.image = new int[program.scene.sceneImageNum];
