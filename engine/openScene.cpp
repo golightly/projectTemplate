@@ -26,5 +26,6 @@ void openScene(Program &program) {
   runCmdLineEditor(editor, program.scene);
   editorGUI.join();
   mousePosWindow.join();
+  SDL_Quit();
 }
 //don't forget to change the texture code because textures no longer delete
