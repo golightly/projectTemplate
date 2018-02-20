@@ -1,9 +1,8 @@
 #pragma once
 
 #include <string>
-#include <fstream>
 #include <SDL.h>
-#include "image.h"
+#include "program.h"
 
 struct Scene {
     std::string sceneName, functionName; //functionName matches the id used by the pointer for the function intended for this scene
@@ -19,4 +18,4 @@ struct Scene {
     //to be added, characters, and other stuff I'm sure
 };
 
-void setupScene(std::ifsteam &file, Scene &scene, std::string &input, Image* image, std::string &scenePath);
+void setupScene(Program &program);
