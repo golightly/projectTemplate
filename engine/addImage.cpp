@@ -33,8 +33,8 @@ void addImage(Program &program) {
     std::getline(std::cin, program.input);
     program.image[(program.imageNum - 1)].name = program.input;
     program.image[(program.imageNum - 1)].path = program.sceneImagePath;
-	if(program.image[(program.imageNum - 1)].path[program.image[(program.imageNum - 1)].path.size - 1] == 'g')
-		convertImage(program.image[program.imageNum - 1]);
+    if(program.image[(program.imageNum - 1)].path[program.image[(program.imageNum - 1)].path.size - 1] == 'g')
+	convertImage(program.image[program.imageNum - 1]);
     program.readFile.open(program.sceneImagePath.c_str(), std::ios::in | std::ios::binary | std::ios::beg);
 	program.memblock = new char[sizeof(uint16_t)];
 	program.readFile.read(program.memblock, sizeof(uint16_t));
