@@ -63,6 +63,7 @@ void setupScene(Program &program) {
         }
     }
     //will require a lot more once characters and stuff added
+    //split this up into separate files
 }
 
 //work on save next
