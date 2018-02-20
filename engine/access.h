@@ -1,5 +1,5 @@
 #pragma once
 
-void accessDate();
+void accessDate(Editor &editor);
 
-void accessComplete();
+void accessComplete(Editor &editor);
