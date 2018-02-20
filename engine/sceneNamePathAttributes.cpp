@@ -1,4 +1,4 @@
 #include "sceneNamePathAttributes.h"
 #include "program.h"
 
-void sceneNamePathAttributes(Program &program)
+void sceneNamePathAttributes(Program &program);
