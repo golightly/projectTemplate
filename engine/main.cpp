@@ -73,6 +73,7 @@ int main(int argc, char* args[]) {
         render(overhead, texture);
         SDL_RenderPresent(overhead.renderer);
         }
-    close(overhead, texture);
+    closeTexture(texture);
+    closeOverhead(overhead);
     return 0;
 }
