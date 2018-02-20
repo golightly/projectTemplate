@@ -1,10 +1,13 @@
 #include "openScene.h"
 #include <iostream>
 #include <cstdlib>
+#include <thread>
 #include "program.h"
 #include "scene.h"
 #include "editor.h"
-#include "runEditor.h"
+#include "runGUI.h"
+#include "runMousePosWindow.h"
+#include "runCmdLineEditor.h"
 
 void openScene(Program &program) {
   //scene already loaded, so it doesn't need to know which scene is loaded, except for saving purposes
@@ -16,6 +19,12 @@ void openScene(Program &program) {
   std::cout << "height of editor window: ";
   std::cin >> editor.windowHeight;
   editor.savePath = program.scenePath[atoi(program.sceneImagePath.c_str())];
-  setupEditor(editor, program.scene);
-  runEditor(editor, program.scene);
+  std::string windowName = "Scene Editor: ";
+  windowName += program.scene.sceneName;
+  std::thread editorGUI(runGUI, windowName, editor, program.scene);
+  std::thread mousePosWindow(runMousePosWindow, editor);
+  runCmdLineEditor(editor, program.scene);
+  editorGUI.join();
+  mousePosWindow.join();
 }
+//don't forget to change the texture code because textures no longer delete
