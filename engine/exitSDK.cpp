@@ -10,5 +10,8 @@ void exitSDK(Program &program, bool &quitSDK) {
         delete program.scenePath;
     if(program.sceneName != NULL)
         delete program.sceneName;
+    program.image = NULL;
+    program.scenePath = NULL;
+    program.sceneName = NULL;
     quitSDK = true;
 }
