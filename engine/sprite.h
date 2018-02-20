@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <string>
+#include "program.h"
 
 struct Sprite {
     std::string spriteName;
