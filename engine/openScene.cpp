@@ -1,7 +1,10 @@
 #include "openScene.h"
+#include <iostream>
+#include <cstdlib>
 #include "program.h"
 #include "scene.h"
 #include "editor.h"
+#include "runEditor.h"
 
 void openScene(Program &program) {
   //scene already loaded, so it doesn't need to know which scene is loaded, except for saving purposes
