@@ -1,5 +1,6 @@
 #include "openScene.h"
 #include <iostream>
+#include <SDL.h>
 #include <cstdlib>
 #include <thread>
 #include "program.h"
