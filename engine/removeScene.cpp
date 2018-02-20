@@ -1,7 +1,7 @@
 #include "removeScene.h"
 #include <fstream>
 #include <iostream>
-#inclue <string>
+#include <string>
 #include <cstdlib>
 #include <cstdio>
 #include "program.h"
