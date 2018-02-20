@@ -6,6 +6,7 @@
 #include "listSceneImage.h"
 #include "sdkGetCommandPath.h"
 #include "sdkProcessCommand.h"
+#include "saveProject.h"
 
 void processSDKInput(Program &program, bool &quitSDK) {
     if(program.input == "help")
@@ -13,7 +14,7 @@ void processSDKInput(Program &program, bool &quitSDK) {
     else if(program.input == "exit")
         exitSDK(program, quitSDK);
     else if(program.input == "save") {
-        //take care of this later
+        saveProject(program);
     }
     else if(program.input == "list-scene" || program.input == "list-image")
         listSceneImage(program);
