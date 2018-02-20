@@ -2,6 +2,11 @@
 #include <string>
 #include "program.h"
 #include "scene.h"
+#include "addImage.h"
+#include "removeImage.h"
+#include "addScene.h"
+#include "removeScene.h"
+#include "openScene.h"
 
 void sdkProcessCommand(Program &program) {
     if(program.commandType == "add-image")
