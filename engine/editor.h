@@ -15,5 +15,3 @@ struct Editor {
   //also have buttons and stuff for the editor only here
   //plan out how editing will actually work next
 };
-
-void setupEditor(Editor &editor, Scene &scene);
