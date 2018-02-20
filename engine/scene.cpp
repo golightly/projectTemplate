@@ -62,6 +62,8 @@ void setupScene(Program &program) {
             program.scene.spawnArea[a][b].y = atoi(program.input.c_str());
         }
     }
+    program.readFile.close();
+    program.readFile.clear();
     //will require a lot more once characters and stuff added
     //split this up into separate files
 }
