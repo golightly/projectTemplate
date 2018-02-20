@@ -14,6 +14,7 @@ void resetSDKData(Program &program) {
         delete [] sprite;
         delete [] program.scene.image;
         delete program.scene;
+        program.scene = NULL;
     }
     program.input.clear();
     program.commandType.clear();
