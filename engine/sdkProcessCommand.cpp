@@ -15,5 +15,6 @@ void sdkProcessCommand(Program &program) {
     else if(program.commandType == "open") {
         setupScene(program);
         openScene(program);
+        //no need for unload function, that's taken care of by resetSDKData
     }
 }
