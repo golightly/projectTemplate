@@ -5,6 +5,7 @@
 #include "program.h"
 #include "sprite.h"
 
+//will require a lot more
 struct Scene {
     std::string sceneName, functionName; //functionName matches the id used by the pointer for the function intended for this scene
     SDL_Rect sceneAttributes; //attributes of the scene itself
@@ -14,7 +15,8 @@ struct Scene {
     Sprite* sprite; //all sprites in the scene
     int collisionNum; //number of collision boxes in the scene
     SDL_Rect* collisionAttributes; //all collision boxes for the scene
-    int spawnGroupNum, spawnGroupSize; //see below
+    int spawnGroupNum; //see below
+    int* spawnGroupSize; //spawn groups can have different sizes
     SDL_Rect** spawnArea; //spawn areas.  first dimension is spawn groups, then second dimension is specific attributes to spawn at
     //to be added, characters, and other stuff I'm sure
 };
