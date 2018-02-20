@@ -14,3 +14,5 @@ struct Texture {
 void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string path);
 
 void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int &pathNum);
+
+void closeTexture(TextUre &texture);
