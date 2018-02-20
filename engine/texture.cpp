@@ -21,3 +21,11 @@ void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::str
         texture.w[a] = w[a]; texture.h[a] = h[a];
     }
 }
+
+void closeTexture(Texture &texture) {
+    Texture &texture) {
+    for(int a = 0; a < texture.textureNum; ++a) {
+        SDL_DestroyTexture(texture.texture[a]);
+    }
+    delete [] texture.texture;
+}
