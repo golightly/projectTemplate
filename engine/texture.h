@@ -7,15 +7,14 @@
 
 struct Texture {
     SDL_Texture** texture;
-    int* imageIndex;
     int* w; int* h;
 };
 
 void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string path);
 
-void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int* imageIndex);
+void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path);
 
-void setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::string path, int imageIndex);
+void setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::string path);
 
 void closeTexture(TextUre &texture);
 
