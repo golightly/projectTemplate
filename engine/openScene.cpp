@@ -32,4 +32,10 @@ void openScene(Program &program) {
   IMG_Quit();
   SDL_Quit();
 }
-//don't forget to change the texture code because textures no longer delete
+//textures are created at an open slot in a 999 size array
+//the files are going to stay 8 bit because that makes them smaller
+//mouse window works differently, uses its own textures
+//textures are loaded from png files for the editor because sdl is so different from the opengl implementation that it doesn't matter
+//work on runGUI
+//add bundleProject function to the first part of the sdk: bundle images and scenes separately, and compress images
+//put the project file in with the rest of the project as it's needed
