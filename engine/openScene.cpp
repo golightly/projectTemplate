@@ -6,6 +6,7 @@
 #include <thread>
 #include "program.h"
 #include "scene.h"
+#include "image.h"
 #include "editor.h"
 #include "runGUI.h"
 #include "runMousePosWindow.h"
