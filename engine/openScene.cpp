@@ -1,6 +1,7 @@
 #include "openScene.h"
 #include <iostream>
 #include <SDL.h>
+#include <SDL_image.h>
 #include <cstdlib>
 #include <thread>
 #include "program.h"
@@ -28,6 +29,7 @@ void openScene(Program &program) {
   runCmdLineEditor(editor, program.scene);
   editorGUI.join();
   mousePosWindow.join();
+  IMG_Quit();
   SDL_Quit();
 }
 //don't forget to change the texture code because textures no longer delete
