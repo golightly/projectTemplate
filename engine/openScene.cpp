@@ -24,9 +24,9 @@ void openScene(Program &program) {
   std::string windowName = "Scene Editor: ";
   windowName += program.scene.sceneName;
   //setup textures for startup of gui window here
-  std::thread editorGUI(runGUI, windowName, editor, program.scene);
+  std::thread editorGUI(runGUI, windowName, editor, program.scene, program.image);
   std::thread mousePosWindow(runMousePosWindow, editor);
-  runCmdLineEditor(editor, program.scene);
+  runCmdLineEditor(editor, program.scene, program.image);
   editorGUI.join();
   mousePosWindow.join();
   IMG_Quit();
