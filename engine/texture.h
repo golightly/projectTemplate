@@ -7,7 +7,7 @@
 
 struct Texture {
     SDL_Texture** texture;
-    int imgNum;
+    int* imageIndex;
     int* w; int* h;
 };
 
