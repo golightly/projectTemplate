@@ -18,6 +18,7 @@ void setupImage(Program &program, Image &image) {
     image.w = (uint16_t)program.memblock;
     program.readFile.read(program.memblock, sizeof(uint16_t));
     image.h = (uint16_t)program.memblock;
+    delete [] program.memblock;
     program.readFile.close();
     program.readFile.clear();
 }
