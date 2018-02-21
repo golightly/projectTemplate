@@ -13,6 +13,7 @@ struct Editor {
   SDL_Event event;
   bool quitEditor;
   Texture* texture;
+  Texture* mouseTexture; //mouse window uses different textures not intended for the scene
   mutex mu;
   //also have buttons and stuff for the editor only here
   //plan out how editing will actually work next
