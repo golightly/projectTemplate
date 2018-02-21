@@ -5,7 +5,7 @@
 #include <string>
 #include "texture.h"
 
-void setupOverhead(Overhead &overhead, int w, int h, std::string windowName, Editor &editor, bool isMouseWindow) {
+void setupOverhead(Overhead &overhead, int w, int h, std::string windowName, Editor &editor) {
     editor.mu.lock();
     if(SDL_WasInit(SDL_INIT_VIDEO) == 0) {
         SDL_Init(SDL_INIT_VIDEO);
