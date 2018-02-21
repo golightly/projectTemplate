@@ -9,6 +9,6 @@ struct Overhead {
     bool isMouseWindow; //mouse window doesn't use textures intended for the scene
 };
 
-void setupOverhead(Overhead &overhead, int w, int h, Editor &editor, bool isMouseWindow);
+void setupOverhead(Overhead &overhead, int w, int h, Editor &editor);
 
-void closeOverhead(Overhead &overhead, bool isMouseWindow);
+void closeOverhead(Overhead &overhead);
