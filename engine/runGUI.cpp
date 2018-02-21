@@ -6,6 +6,6 @@
 
 void runGUI(std::string windowName, Editor &editor, Scene &scene) {
   setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName);
-  //deal with texture inner setup and the texture setup in openscene.cpp
+  
   //continue here
 }
