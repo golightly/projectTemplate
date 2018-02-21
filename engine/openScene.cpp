@@ -22,6 +22,7 @@ void openScene(Program &program) {
   editor.savePath = program.scenePath[atoi(program.sceneImagePath.c_str())];
   std::string windowName = "Scene Editor: ";
   windowName += program.scene.sceneName;
+  //setup textures for startup of gui window here
   std::thread editorGUI(runGUI, windowName, editor, program.scene);
   std::thread mousePosWindow(runMousePosWindow, editor);
   runCmdLineEditor(editor, program.scene);
