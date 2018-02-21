@@ -14,13 +14,13 @@ void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string pa
 }
 
 //setup a group of textures at startup
-void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int &pathNum) {
+void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path, int pathNum) {
     texture.texture = new SDL_Texture*[999];
     for(int a = 0; a < 999; ++a) {
         texture.texture[a] = NULL;
     }
     texture.w = new int[999]; texture.h = new int[999];
-    for(int a = 0; a < texture.textureNum; ++a) {
+    for(int a = 0; a < pathNum; ++a) {
         innerSetupTexture(overhead, texture.texture[a], path[a]);
         texture.w[a] = w[a]; texture.h[a] = h[a];
     }
