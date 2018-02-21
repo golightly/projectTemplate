@@ -29,7 +29,7 @@ void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::str
 //setup one texture, during runtime, returns index of texture so that sprites can be set to it
 int setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::string path) {
     //find the first empty texture pointer and set the texture up there
-    if(texture.texture == NULL) {
+    if(texture.texture == NULL) { //if is new scene
         texture.texture = new SDL_Texture*[999];
         for(int a = 0; a < 999; ++a) {
             texture.texture[a] = NULL;
