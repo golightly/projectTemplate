@@ -34,6 +34,7 @@ void setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::strin
             texture.w[a] = w;
             texture.h[a] = h;
             innerSetupTexture(overhead, texture.texture[a], path);
+            a = 999;
         }
     }
 }
