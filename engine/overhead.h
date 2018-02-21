@@ -8,6 +8,6 @@ struct Overhead {
     int imgFlags;
 };
 
-void setupOverhead(Overhead &overhead, int w, int h);
+void setupOverhead(Overhead &overhead, int w, int h, Editor &editor);
 
 void closeOverhead(Overhead &overhead);
