@@ -14,7 +14,7 @@ void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string pa
 
 void setupTexture(Overhead &overhead, Texture &texture, int* w, int* h, std::string* path);
 
-void setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::string path);
+int setupTexture(Overhead &overhead, Texture &texture, int w, int h, std::string path);
 
 void closeTexture(TextUre &texture);
 
