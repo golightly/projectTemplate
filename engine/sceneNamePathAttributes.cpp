@@ -1,6 +1,6 @@
 #include "sceneNamePathAttributes.h"
 #include <fstream>
-#inclue <iostream>
+#include <iostream>
 #include <string>
 #include <cstdlib>
 #include "scene.h"
