@@ -24,7 +24,6 @@ void openScene(Program &program) {
   editor.savePath = program.scenePath[atoi(program.sceneImagePath.c_str())];
   std::string windowName = "Scene Editor: ";
   windowName += program.scene.sceneName;
-  //setup textures for startup of gui window here
   std::thread editorGUI(runGUI, windowName, editor, program.scene, program.image);
   std::thread mousePosWindow(runMousePosWindow, editor);
   runCmdLineEditor(editor, program.scene, program.image);
@@ -40,3 +39,4 @@ void openScene(Program &program) {
 //work on runGUI
 //add bundleProject function to the first part of the sdk: bundle images and scenes separately, and compress images
 //put the project file in with the rest of the project as it's needed
+//have program store scene width and height
