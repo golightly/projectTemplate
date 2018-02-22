@@ -14,8 +14,8 @@
 
 void setupScene(Program &program) {
     program.scene = new Scene;
-    sceneHeightWidth(program);
     sceneNmePathAttributes(program);
+    sceneHeightWidth(program);
     sceneImageNumSprite(program);
     sceneSetupCollision(program);
     sceneSetupSpawns(program);
