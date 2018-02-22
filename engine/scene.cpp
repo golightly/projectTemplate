@@ -10,12 +10,10 @@
 #include "sceneNamePathAttributes.h"
 #include "sceneSetupCollision.h"
 #include "sceneSetupSpawns.h"
-#include "sceneHeightWidth.h"
 
 void setupScene(Program &program) {
     program.scene = new Scene;
     sceneNmePathAttributes(program);
-    sceneHeightWidth(program);
     sceneImageNumSprite(program);
     sceneSetupCollision(program);
     sceneSetupSpawns(program);
