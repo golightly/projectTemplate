@@ -30,4 +30,13 @@ void addScene(Program &program) {
     std::getline(std::cin, program.scenePath[program.sceneNum - 1]);
     std::cout << "Scene name: ";
     std::getline(std::cin, program.sceneName[program.sceneNum - 1]);
+    std::cout << "Scene width: ";
+    std::cin >> program.input;
+    program.writeFile.open(program.scenePath[program.sceneNum - 1].c_str());
+    program.writeFile << program.input;
+    std::cout << "Scene Height: ";
+    std::cin >> program.input;
+    program.writeFile << program.input;
+    program.writeFile.close();
+    program.writeFile.clear();
 }
