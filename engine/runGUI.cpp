@@ -37,4 +37,5 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   setupTexture(editor.GUIOverhead, editor.editorTexture, path); //this is index 1
   accessComplete();
   //continue here
+  //scenes have no size right now! fix that, and set the camera to start at the top left corner of this scene
 }
