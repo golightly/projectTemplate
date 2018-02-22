@@ -7,6 +7,7 @@
 
 //will require a lot more
 struct Scene {
+    int width, height;
     std::string sceneName, functionName; //functionName matches the id used by the pointer for the function intended for this scene
     SDL_Rect sceneAttributes; //attributes of the scene itself
     int sceneImageNum; //number of images/texture required for the scene
