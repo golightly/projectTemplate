@@ -10,6 +10,8 @@ void sceneNamePathAttributes(Program &program) {
   program.scene.sceneName = program.sceneName[atoi(program.sceneImagePath.c_str())];
   program.readFile.open(program.scenePath[atoi(program.sceneImagePath.c_str())].c_str());
   std::getline(program.readFile, program.scene.functionName);
-  program.scene.sceneAttributes.w = 
-  program.scene.sceneAttributes.h = 
+  std::getline(program.readFile, program.input);
+  program.scene.sceneAttributes.w = atoi(program.input.c_str());
+  std::getline(program.readFile, program.inpit);
+  program.scene.sceneAttributes.h = atoi(program.input.c_str());
 }
