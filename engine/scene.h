@@ -16,7 +16,7 @@ struct Scene {
     int collisionNum; //number of collision boxes in the scene
     SDL_Rect* collisionAttributes; //all collision boxes for the scene
     int spawnGroupNum; //see below
-    int* spawnGroupSize; //spawn groups can have different sizes
+    int* spawnGroupSize; //spawn groups can have different sizes, respresents size of second dimension in spawnArea
     SDL_Rect** spawnArea; //spawn areas.  first dimension is spawn groups, then second dimension is specific attributes to spawn at
     //to be added, characters, and other stuff I'm sure
 };
