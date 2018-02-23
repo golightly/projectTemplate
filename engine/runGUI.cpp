@@ -37,7 +37,5 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   setupTexture(editor.GUIOverhead, editor.editorTexture, path); //this is index 1
   accessComplete();
   //continue here
-  //scenes have size attribute but it's not stored anywhere for startup.  store it in program.  scenePathAttributes is unfinished
-  //now, and save will need fixing, and scene setup will need work and program.h will need stuff added to it
   //setup sprites in relation to scene in sprite setup
 }
