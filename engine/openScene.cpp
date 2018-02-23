@@ -39,4 +39,4 @@ void openScene(Program &program) {
 //work on runGUI
 //add bundleProject function to the first part of the sdk: bundle images and scenes separately, and compress images
 //put the project file in with the rest of the project as it's needed
-//have program store scene width and height
+//when scene is deleted, it shouold also delete sprites and other custom stuff
