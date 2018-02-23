@@ -22,3 +22,5 @@ struct Scene {
 };
 
 void setupScene(Program &program);
+
+void closeScene(Program &program);
