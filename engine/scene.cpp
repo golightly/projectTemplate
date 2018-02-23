@@ -22,7 +22,7 @@ void setupScene(Program &program) {
     //will require a lot more once characters and stuff added
 }
 
-void closeScene(Program &program) {
+void closeScene(Scene &scene) {
     delete [] scene.image;
     delete [] scene.sprite;
     delete [] scene.collisionAttributes;
