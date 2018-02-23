@@ -22,4 +22,18 @@ void setupScene(Program &program) {
     //will require a lot more once characters and stuff added
 }
 
+void closeScene(Program &program) {
+    delete [] scene.image;
+    delete [] scene.sprite;
+    delete [] scene.collisionAttributes;
+    for(int a = 0; a < scene.spawnGroupNum; ++a) {
+        for(int b = 0; b < scene.spawnArea[a] {
+            delete [] scene.spawnArea[a];
+        }
+    }
+    delete [] scene.spawnArea;
+    delete [] scene.spawnGroupSize;
+    delete scene;
+}
+
 //work on openScene/main function next
