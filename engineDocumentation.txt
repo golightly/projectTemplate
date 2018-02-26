@@ -50,3 +50,13 @@ if yes uses the remove function to delete the path stored in sceneImagePath
 removes one scene: adjusts sceneNum, scenePath and sceneName
 
 #9 addScene.cpp
+checks if any scene data is already stored
+requests a new scene path, scene name, width and height from the user.
+stores width and height in a new scene file named from the path given
+
+#10 removeImage.cpp
+asks user if image should also be deleted from the hard drive
+if yes, uses the remove function to delete the path stored in sceneImagePath
+removes one image, adjusts image and imageNum
+
+#11 addImage
