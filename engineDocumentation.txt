@@ -86,3 +86,24 @@ gets image name and path from the project file
 gets the size and width from the image file
 
 #15 exitSDK.cpp
+receives the program and quitSDK by reference
+if image isn't null, deletes it
+if scenePath isn't null, deletes it
+if sceneName isn't null, deletes it
+sets all to null
+sets quitSDK to true
+
+#16 scene.h
+all composite members are deleted in closeScene
+contains sceneName string, setup in sceneNamePathAttributes (20)
+contains functionName string, setup in sceneNamePathAttributes (20)
+contains sceneAttributes SDL_Rect, setup in sceneNamePathAttributes (20)
+contains sceneImageNum int, number of images/textures required for the scene, setup in sceneImageNumSprite (21)
+contains image int pointer, index of images required for the scene, setup in sceneImageNumSprite 21)
+contains spriteNum int, setup in sceneImageNumSprite (21)
+contains sprite (24) instance pointer, setup in setupSprite (24)
+contains collisionNum int, setup in sceneSetupCollision (22)
+contains collisionAttributes SDL_Rect pointer, setup in sceneSetupCollision (22)
+contains spawnGroupNum int, stores first dimension size of spawnArea, setup in sceneSetupSpawns (23)
+contains spawnGroupSize pointer, stores second dimension size of spawnArea, setup in sceneSetupSpawns (23)
+contains spawnArea SDL_Rect 2d pointer, setup in sceneSetupSpawns (23)
