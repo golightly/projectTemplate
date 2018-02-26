@@ -27,9 +27,7 @@ void closeScene(Scene &scene) {
     delete [] scene.sprite;
     delete [] scene.collisionAttributes;
     for(int a = 0; a < scene.spawnGroupNum; ++a) {
-        for(int b = 0; b < scene.spawnArea[a] {
-            delete [] scene.spawnArea[a];
-        }
+        delete [] scene.spawnArea[a];
     }
     delete [] scene.spawnArea;
     delete [] scene.spawnGroupSize;
