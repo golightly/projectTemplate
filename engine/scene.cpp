@@ -32,6 +32,7 @@ void closeScene(Scene &scene) {
     delete [] scene.spawnArea;
     delete [] scene.spawnGroupSize;
     delete scene;
+    scene = NULL;
 }
 
 //work on openScene/main function next
