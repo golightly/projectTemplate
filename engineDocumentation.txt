@@ -37,7 +37,7 @@ gets n or c followed by the project path, puts the path in programPath, stores t
 calls setupProgram (3) passes it program by reference
 
 #6 resetSDKData.cpp
-if the scene is not null, deletes all its composite members and the scene itself and sets it to null
+if the scene is not null, calls closeScene (12)
 clears input, commandType and sceneImagePath
 
 #7 sdkGetCommandPath.cpp
@@ -53,6 +53,7 @@ removes one scene: adjusts sceneNum, scenePath and sceneName
 checks if any scene data is already stored
 requests a new scene path, scene name, width and height from the user.
 stores width and height in a new scene file named from the path given
+adjusts sceneNum
 
 #10 removeImage.cpp
 asks user if image should also be deleted from the hard drive
@@ -60,3 +61,19 @@ if yes, uses the remove function to delete the path stored in sceneImagePath
 removes one image, adjusts image and imageNum
 
 #11 addImage
+checks if any image data is already stored
+requests a new image name and path.
+gets image width and height from image file using the path
+stores all data in a new member of the image array
+adjusts imageNum
+
+#12 scene.cpp
+contains setupScene.cpp
+contains closeScene
+setupScene declares a new scene with the scene pointer
+calls sceneNamePathAttributes (20)
+calls sceneImageNumSprite (21)
+calls sceneSetupCollision (22)
+calls sceneSetupSpawns (23)
+closeScene receives a scene by reference, and deletes all of its composite members and sets the scene pointer to null
+
