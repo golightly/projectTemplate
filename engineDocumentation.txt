@@ -15,7 +15,7 @@ contains scenePath string pointer, stores all scene paths, initialised in runSDK
 contains sceneName string pointer, stores all scene names, initialised in runSDK (4), received in setupProgram (3), modified in removeScene (8) addScene (9) and exitSDK (15)
 contains sceneNum int, initialised in runSDK (4), received in setupProgram (3), modified in removeScene (8) and addScene (9)
 contains imageNum int, initialised in runSDK (4), received in setupProgram (3), modified in removeImage (10) and addImage (11)
-contains scene (16) instance pointer, intended to point to only one scene, initialised in runSDK (4), setup in setupScene (12), modified in closeScene (13)
+contains scene (16) instance pointer, intended to point to only one scene, initialised in runSDK (4), setup in setupScene (12), modified in closeScene (12)
 contains image (17) instance pointer, array of all image instances for program, initialised in runSDK (4), setup in setupProgram (3) and setupImage (14), modified in removeImage (10) addImage (11) and exitSDK (15)
 contains memblock char pointer, used whenever binary data is read from a file
 
@@ -23,7 +23,7 @@ contains memblock char pointer, used whenever binary data is read from a file
 contains setupProgram
 checks if 0 index of input received in runSDK (4) is n or c
 if n, gets program name and type from user
-if c, gets program name, type, sceneNum, imageNum from .project file. calls setupImage for each image in a for loop, fills in sceneName and scenePath arrays from two for loops getting data from the file
+if c, gets program name, type, sceneNum, imageNum from .project file. calls setupImage (14) for each image in a for loop, fills in sceneName and scenePath arrays from two for loops getting data from the file
 
 #4 runSDK.cpp
 initialises sceneNum, imageNum, scene, image, scenePath and sceneName to NULL or 0
@@ -77,3 +77,12 @@ calls sceneSetupCollision (22)
 calls sceneSetupSpawns (23)
 closeScene receives a scene by reference, and deletes all of its composite members and sets the scene pointer to null
 
+#13 
+
+#14 image.cpp
+contains setupImage
+works on one image array member per call
+gets image name and path from the project file
+gets the size and width from the image file
+
+#15 exitSDK.cpp
