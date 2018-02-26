@@ -13,8 +13,6 @@ void setupProgram(Program &program) {
         std::getline(std::cin, program.programName);
         std::cout << "Program Type(sdlopengl | directx12): ";
         std::getline(std::cin, program.programType);
-        std::cout << "Program Path: ";
-        std::getline(std::cin, program.programPath);
     }
     else {
         //continue project
