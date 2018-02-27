@@ -107,3 +107,34 @@ contains collisionAttributes SDL_Rect pointer, setup in sceneSetupCollision (22)
 contains spawnGroupNum int, stores first dimension size of spawnArea, setup in sceneSetupSpawns (23)
 contains spawnGroupSize pointer, stores second dimension size of spawnArea, setup in sceneSetupSpawns (23)
 contains spawnArea SDL_Rect 2d pointer, setup in sceneSetupSpawns (23)
+
+#17 image.h
+contains name string
+contains path string
+contains w uint16_t
+contains h uint16_t
+
+#18 sdkGetInput
+prints out the program name, the number of scenes and images, prompts user for a command and maybe an argument
+saves the user's input in input
+
+#19 processSDKInput
+receives program and quitSDK by reference
+if input is help, calls printHelp (13)
+if input is exit calls exitSDK (15), passes it program and quitSDK by reference
+if input is save, calls saveProject (24), passes it program by reference
+if input is list-scene or list-image, calls listSceneImage (25)
+otherwise (for commands that have arguments attached): 
+it calls sdkGetCommandPath and passes it program by reference
+calls sdkProcessCommand and passes it program by reference
+
+#20 sceneNamePathAtrributes
+gets the current scene name from the sceneName array, stores it in in sceneName in scene
+opens the scene file
+gets the functionName
+gets the sceneAttributes
+
+#21 sceneImageNumSprite
+gets sceneImageNum from the scene file
+sets up image in scene
+gets the indexes that go (error here! check file)
