@@ -15,7 +15,7 @@ void sceneImageNumSprite(Program &program) {
   for(int a = 0; a < program.scene.sceneImageNum; ++a) {
     std::getline(program.readFile, program.input);
     program.scene.image[a] = atoi(program.input.c_str());
-    program.scene.spriteNum += atoi(program.input.c_str());
-  }
+    program.scene.spriteNum += atoi(program.input.c_str()); //this needs correcting! probably.  how to know how many
+  }//sprites per image? image holds the index of the image required!  rework it all.
   setupSprite(program);
 }
