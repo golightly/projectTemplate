@@ -17,5 +17,5 @@ void sceneImageNumSprite(Program &program) {
     program.scene.image[a] = atoi(program.input.c_str());
     program.scene.spriteNum += atoi(program.input.c_str()); //this needs correcting! probably.  how to know how many
   }//sprites per image? image holds the index of the image required!  rework it all.
-  setupSprite(program);
-}
+  setupSprite(program); //wait, what image index.  there is no such thing... rewrite the stuff for the image variable
+}// to actually be the number of sprites per texture
