@@ -4,13 +4,14 @@
 #include <SDL.h>
 #include "program.h"
 #include "sprite.h"
+#include "sceneImage.h"
 
 //will require a lot more
 struct Scene {
     std::string sceneName, functionName; //functionName matches the id used by the pointer for the function intended for this scene
     SDL_Rect sceneAttributes; //attributes of the scene itself
     int sceneImageNum; //number of images/texture required for the scene
-    int* image; //images required for the scene, size is number of textures, holds the id of the image in the image array
+    SceneImage sceneImage; //contains number of sprites per texture and the index of that image
     int spriteNum;
     Sprite* sprite; //all sprites in the scene
     int collisionNum; //number of collision boxes in the scene
