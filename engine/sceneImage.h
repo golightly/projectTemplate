@@ -1,6 +1,6 @@
 #pragma once
 
-struct sceneImage {
+struct SceneImage {
   int numSprites;
   int textureIndex;
 };
