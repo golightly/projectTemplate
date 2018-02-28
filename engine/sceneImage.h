@@ -1,6 +1,8 @@
 #pragma once
 
+#include <string>
+
 struct SceneImage {
   int numSprites;
-  int imageIndex;
+  std::string imagePath;
 };
