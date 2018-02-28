@@ -2,5 +2,5 @@
 
 struct SceneImage {
   int numSprites;
-  int textureIndex;
+  int imageIndex;
 };
