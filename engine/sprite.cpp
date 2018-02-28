@@ -7,7 +7,8 @@
 #include "program.h"
 
 //sets up one sprite
-void setupSprite(Sprite &sprite, int w, int h, int x, int y, int textureIndex) {
+void setupSprite(Sprite &sprite, int w, int h, int x, int y, int textureIndex, std::string spriteName) {
+    sprite.spriteName = spriteName;
     sprite.textureIndex = textureIndex;
     sprite.attributes.w = w; sprite.attributes.h = h; 
     sprite.attributes.x = x; sprite.attributes.y = y;
