@@ -23,14 +23,32 @@ void setupScene(Program &program) {
 }
 
 void closeScene(Scene &scene) {
-    delete [] scene.image;
-    delete [] scene.sprite;
-    delete [] scene.collisionAttributes;
+    if(scene.sceneImageNum > 1)
+        delete [] scene.sceneImage;
+    else if(scene.sceneImageNum == 1)
+        delete scene.sceneImage;
+    if(scene.spriteNum > 1)
+        delete [] scene.sprite;
+    else if(scene.spriteNum == 1)
+        delete scene.sprite;
+    if(scene.collisionNum > 1)
+        delete [] scene.collisionAttributes;
+    else if(scene.collisionNum == 1)
+        delete scene.collisionAttributes;
     for(int a = 0; a < scene.spawnGroupNum; ++a) {
-        delete [] scene.spawnArea[a];
+        if(scene.spawnGroupSize[a] > 1)
+            delete [] scene.spawnArea[a];
+        else if(scene.spawnGroupSize[a] == 1)
+            delete scene.spawnArea[a];
     }
-    delete [] scene.spawnArea;
-    delete [] scene.spawnGroupSize;
+    if(scene.spawnGroupNum > 1)
+        delete [] scene.spawnArea;
+    else if(scene.spawnGroupNum == 1)
+        delete scene.spawnArea;
+    if(scene.spawnGroupSize > 1)
+        delete [] scene.spawnGroupSize;
+    else if(scene.spawnGroupSize == 1)
+        delete scene.spawnGroupSize;
     delete scene;
     scene = NULL;
 }
