@@ -11,7 +11,7 @@ void runSDK(Program &program) {
     program.sceneNum = 0;
     program.imageNum = 0;
     program.scene = NULL;
-    program.image = NULL;
+    program.sceneImage = NULL;
     program.scenePath = NULL;
     program.sceneName = NULL;
     newContinueSDK(program);
