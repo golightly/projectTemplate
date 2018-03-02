@@ -15,7 +15,7 @@ void setupSprite(Sprite &sprite, int w, int h, int x, int y, int textureIndex, s
 }
 
 //sets up ALL of sprites for startup
-void setupSprite(Program &program) {
+void setupSprite(Program &program) { //has already checked that num of sprites is greater than 0
     program.scene.sprite = new Sprite[program.scene.spriteNum];
     for(int a = 0; a < program.scene.spriteNum; ++a) {
         std::getline(program.readFile, program.scene.sprite[a].spriteName);
