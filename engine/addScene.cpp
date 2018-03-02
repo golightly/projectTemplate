@@ -35,11 +35,12 @@ void addScene(Program &program) {
     std::cout << "Scene width: ";
     std::cin >> program.input;
     program.writeFile.open(program.scenePath[program.sceneNum - 1].c_str());
-    program.writeFile << "NULL FUNCTION PATH"; //initialise function path
+    program.writeFile << "NULL FUNCTION PATH" << "\n"; //initialise function path
     program.writeFile << program.input << "\n";
     std::cout << "Scene Height: ";
     std::cin >> program.input;
     program.writeFile << program.input << "\n";
+    program.writeFile << "0" << "\n"; //initialise sceneImageNum
     program.writeFile.close();
     program.writeFile.clear();
 }
