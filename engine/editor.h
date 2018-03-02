@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include "overhead.h"
 #include "scene.h"
+3include "texture.h"
 
 //put all the sdl and scene editing stuff here
 struct Editor {
