@@ -24,6 +24,7 @@ void addImage(Program &program) {
             program.image[a].w = temp[a].w;
             program.image[a].h = temp[a].h;
         }
+	    delete [] temp;
     }
     else {
         ++program.imageNum;
@@ -33,7 +34,7 @@ void addImage(Program &program) {
     std::getline(std::cin, program.input);
     program.image[(program.imageNum - 1)].name = program.input;
     program.image[(program.imageNum - 1)].path = program.sceneImagePath;
-    if(program.image[(program.imageNum - 1)].path[program.image[(program.imageNum - 1)].path.size - 1] == 'g')
+    if(program.image[(program.imageNum - 1)].path[program.image[(program.imageNum - 1)].path.size() - 1] == 'g')
 	convertImage(program.image[program.imageNum - 1]);
     program.readFile.open(program.sceneImagePath.c_str(), std::ios::in | std::ios::binary | std::ios::beg);
 	program.memblock = new char[sizeof(uint16_t)];
