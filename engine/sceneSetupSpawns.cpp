@@ -10,12 +10,14 @@
 void sceneSetupSpawns(Program &program) {
   std::getline(program.readFile, program.input);
   program.scene.spawnGroupNum = atoi(program.input.c_str());
-  program.scene.spawnGroupSize = new int[program.scene.spawnGroupNum];
+  if(program.scene.spawnGroupNum > 0)
+    program.scene.spawnGroupSize = new int[program.scene.spawnGroupNum];
   for(int a = 0; a < program.scene.spawnGroupNum; ++a) {
     std::getline(program.readFile, program.input);
     program.scene.spawnGroupSize[a] = atoi(program.input.c_str());
   }
-  program.scene.spawnArea = new SDL_Rect*[program.scene.spawnGroupNum];
+  if(program.scene.spawnGroupNum > 0)
+    program.scene.spawnArea = new SDL_Rect*[program.scene.spawnGroupNum];
   for(int a = 0; a < program.scene.spawnGroupNum; ++a) {
     program.scene.SpawnArea[a] = new SDL_Rect[program.scene.spawnGroupSize[a]];
   }
