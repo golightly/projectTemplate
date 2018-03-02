@@ -19,15 +19,15 @@ void setupSprite(Program &program) { //has already checked that num of sprites i
     program.scene.sprite = new Sprite[program.scene.spriteNum];
     for(int a = 0; a < program.scene.spriteNum; ++a) {
         std::getline(program.readFile, program.scene.sprite[a].spriteName);
-        std::getline(program.readFile, program.index);
+        std::getline(program.readFile, program.input);
         program.scene.sprite[a].textureIndex = atoi(program.input.c_str());
-        std::getline(program.readFile, program.index);
+        std::getline(program.readFile, program.input);
         program.scene.sprite[a].attributes.w = atoi(program.input.c_str());
-        std::getline(program.readFile, program.index);
+        std::getline(program.readFile, program.input);
         program.scene.sprite[a].attributes.h = atoi(program.input.c_str());
-        std::getline(program.readFile, program.index);
+        std::getline(program.readFile, program.input);
         program.scene.sprite[a].attributes.x = atoi(program.input.c_str());
-        std::getline(program.readFile, program.index);
+        std::getline(program.readFile, program.input);
         program.scene.sprite[a].attributes.y = atoi(program.input.c_str());
     }
 }
