@@ -11,7 +11,8 @@
 void sceneImageNumSprite(Program &program) {
   std::getline(program.readFile, program.input);
   program.scene.sceneImageNum = atoi(program.input.c_str());
-  program.scene.sceneImage = new SceneImage[program.scene.sceneImageNum];
+  if(program.scene.sceneImageNum > 0)
+    program.scene.sceneImage = new SceneImage[program.scene.sceneImageNum];
   program.scene.spriteNum = 0;
   for(int a = 0; a < program.scene.sceneImageNum; ++a) {
     std::getline(program.readFile, program.input);
