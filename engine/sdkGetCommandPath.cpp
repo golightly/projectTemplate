@@ -8,7 +8,7 @@ void sdkGetCommandPath(Program &program) {
             for(int b = a + 2; b < program.input.size(); ++b) {
                 program.sceneImagePath += input[b];
             }
-            a = b;
+            a = program.input.size();
         }
     }
 }
