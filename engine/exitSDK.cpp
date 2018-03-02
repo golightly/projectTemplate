@@ -7,9 +7,9 @@ void exitSDK(Program &program, bool &quitSDK) {
     if(program.image != NULL)
         delete [] program.image;
     if(program.scenePath != NULL)
-        delete program.scenePath;
+        delete [] program.scenePath;
     if(program.sceneName != NULL)
-        delete program.sceneName;
+        delete [] program.sceneName;
     program.image = NULL;
     program.scenePath = NULL;
     program.sceneName = NULL;
