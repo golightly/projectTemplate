@@ -21,5 +21,6 @@ void sceneImageNumSprite(Program &program) {
     program.scene.sceneImage[a].numSprites = atoi(program.input.c_str());
     program.scene.spriteNum += program.scene.sceneImage[a].numSprites;
   }
-  setupSprite(program);
+  if(program.scene.spriteNum > 0)
+    setupSprite(program);
 }
