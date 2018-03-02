@@ -13,14 +13,16 @@ void addScene(Program &program) {
             temp[a] = program.scenePath[a];
             temp2[a] = program.sceneName[a];
         }
-        delete program.scenePath;
-        delete program.sceneName;
+        delete [] program.scenePath;
+        delete [] program.sceneName;
         program.scenePath = new std::string[program.sceneNum];
         program.sceneName = new std::string[program.sceneNum];
         for(int a = 0; a < (program.sceneNum - 1); ++a) {
             program.scenePath[a] = temp[a];
             program.sceneName[a] = temp2[a];
         }
+        delete [] temp;
+        delete [] temp2;
     }
     else {
         program.scenePath = new std::string[program.sceneNum];
@@ -33,10 +35,10 @@ void addScene(Program &program) {
     std::cout << "Scene width: ";
     std::cin >> program.input;
     program.writeFile.open(program.scenePath[program.sceneNum - 1].c_str());
-    program.writeFile << program.input;
+    program.writeFile << program.input << "\n";
     std::cout << "Scene Height: ";
     std::cin >> program.input;
-    program.writeFile << program.input;
+    program.writeFile << program.input << "\n";
     program.writeFile.close();
     program.writeFile.clear();
 }
