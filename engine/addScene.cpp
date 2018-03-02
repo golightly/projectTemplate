@@ -41,6 +41,8 @@ void addScene(Program &program) {
     std::cin >> program.input;
     program.writeFile << program.input << "\n";
     program.writeFile << "0" << "\n"; //initialise sceneImageNum
+    program.writeFile << "0" << "\n"; //initialise collisionNum
+    program.writeFile << "0" << "\n"; //initialise spawnGroupNum
     program.writeFile.close();
     program.writeFile.clear();
 }
