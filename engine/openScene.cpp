@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <cstdlib>
 #include <thread>
+#include <functional>
 #include "program.h"
 #include "scene.h"
 #include "image.h"
@@ -25,9 +26,9 @@ void openScene(Program &program) {
   editor.savePath = program.scenePath[atoi(program.sceneImagePath.c_str())];
   std::string windowName = "Scene Editor: ";
   windowName += program.scene.sceneName;
-  std::thread editorGUI(runGUI, windowName, editor, program.scene, program.image);
-  std::thread mousePosWindow(runMousePosWindow, editor);
-  runCmdLineEditor(editor, program.scene, program.image);
+  std::thread editorGUI(runGUI, windowName, std::ref(editor), std::ref(program.scene), std::ref(program.image));
+  std::thread mousePosWindow(runMousePosWindow, std::ref(editor));
+  runCmdLineEditor(editor, std::ref(program.scene), std::ref(program.image));
   editorGUI.join();
   mousePosWindow.join();
   closeTexture(editor.texture);
