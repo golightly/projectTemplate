@@ -13,6 +13,13 @@ void accessData(Editor &editor, Scene &scene. std::string &protectedType, std::s
     if(actionType == "render") {
       render(editor.GUIOverhead, editor.texture[scene.sprite[a].textureIndex], scene.sprite[index]);
     }
+    else if(actionType = "checkPosition") {
+      actionType = "false";
+      if((scene.sprite[index].attributes.x + scene.sprite[index].attributes.w) > editor.cameraX || scene.sprite[index].attributes.x < (editor.cameraX + editor.windowWidth)) {
+        if((scene.sprite[index].attributes.y + scene.sprite[index].attributes.h) > editor.cameraY || scene.sprite[index].attributes.y < (editor.cameraY + editor.windowHeight))
+          actionType = "true";
+      }
+    }
     editor.spriteLock.unlock();
   }
 }
