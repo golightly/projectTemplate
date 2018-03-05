@@ -9,7 +9,7 @@
 
 void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) {
   accessData();
-  setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName);
+  setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName, editor);
   editor.texture.texture = NULL;
   editor.editorTexture = NULL;
   if(scene.sceneImageNum > 0) {
