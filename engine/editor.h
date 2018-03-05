@@ -16,7 +16,8 @@ struct Editor {
   Texture* texture;
   Texture* mouseTexture; //mouse window uses different textures not intended for the scene
   Texture* editorTexture; //textures only used by the editor, ie. collision box representations
-  Sprite* editorSprite;
+  int editorSpriteNum; //this should be setup with scene setup
+  Sprite* editorSprite; //this too
   std::mutex spriteLock, sdl_lock;
   int cameraX, cameraY;
   //also have buttons and stuff for the editor only here
