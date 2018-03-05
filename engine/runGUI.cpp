@@ -51,7 +51,8 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
     for(int a = 0; a < scene.spriteNum; ++a) {
       render(editor.GUIOverhead, editor.texture[scene.sprite[a].textureIndex] //continue
     }
-    //define sprites for editorTextures!
+    //define sprites for editorTextures! then render them too
+    SDL_RenderPresent(editor.GUIOverhead.renderer);
   }
   //continue here
   //setup sprites in relation to scene in sprite setup - done
