@@ -8,7 +8,6 @@
 #include "image.h"
 #include "access.h"
 #include "sceneImage.h"
-#include "render.h"
 
 void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) {
   setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName, editor);
@@ -45,18 +44,40 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
     while(SDL_PollEvent(&event) != 0) {
       if(event.type == SDL_QUIT)
         quit = true;
+      else if(event.type == SDL_KEYDOWN) {
+        switch(event.key.keysym.sym) {
+          case SDLK_UP:
+            if(editor.cameraY > 0)
+              --editor.cameraY;
+            break;
+          case SDLK_DOWN:
+            if((editor.cameraY + editor.windowHeight) < scene.sceneAttributes.h)
+              ++editor.cameraY;
+            break;
+          case SDLK_LEFT:
+            if(editor.cameraX > 0)
+              --editor.cameraX;
+            break;
+          case SDLK_RIGHT:
+            if((editor.cameraX + editor.windowWidth) < scene.sceneAttributes.w)
+              ++editor.cameraY;
+            break;
+        }
+      }
     }
     SDL_RenderClear(editor.GUIOverhead.renderer);
     protectedType = "sprite";
-    actionType = "render";
     for(int a = 0; a < scene.spriteNum; ++a) {
+      actionType = "checkPosition";
       accessData(editor, scene, protectedType, actionType, a);
+      if(actionType == "true") {
+        actionType = "render";
+        accessData(editor, scene, protectedType, actionType, a);
+      }
     }
     //define sprites for editorTextures! then render them too
     SDL_RenderPresent(editor.GUIOverhead.renderer);
   }
   //continue here
   //setup sprites in relation to scene in sprite setup - done
-  //error in how data is accessed, this doesn't actually protect it at all! restructure
-  //also, forgot to do camera stuff and movement of camera
 }
