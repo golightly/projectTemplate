@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "editor.h"
 #include "sprite.h"
 
