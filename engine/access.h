@@ -1,7 +1,6 @@
 #pragma once
 
 #include "editor.h"
+#include "sprite.h"
 
-void accessData(Editor &editor);
-
-void accessComplete(Editor &editor);
+Sprite accessData(Editor &editor, int index);
