@@ -5,15 +5,9 @@
 #include "overhead.h"
 
 void innerSetupTexture(Overhead &overhead, SDL_Texture* &texture, std::string path) {
-<<<<<<< HEAD
     path[path.size() - 1] = 'g';
     path[path.size() - 2] = 'n';
     path[path.size() - 3] = 'g';
-=======
-    path[path.size() - 1] = "g";
-    path[path.size() - 2] = "n";
-    path[path.size() - 3] = "g";
->>>>>>> origin/master
     SDL_Surface* surface = IMG_Load(path.c_str()); //leave this as is, don't care about the sdl way, opengl is different
     texture = SDL_CreateTextureFromSurface(overhead.renderer, surface);
     SDL_FreeSurface(surface);

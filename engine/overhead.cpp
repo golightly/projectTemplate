@@ -11,11 +11,7 @@ void setupOverhead(Overhead &overhead, int w, int h, std::string windowName, Edi
     if(SDL_WasInit(SDL_INIT_VIDEO) == 0) {
         SDL_Init(SDL_INIT_VIDEO);
         overhead.imgFlags = IMG_INIT_PNG;
-<<<<<<< HEAD
         IMG_Init(overhead.imgFlags);
-=======
-        IMG_INIT(overhead.imgFlags;
->>>>>>> origin/master
     }
     editor.sdl_lock.unlock();
     overhead.window = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
