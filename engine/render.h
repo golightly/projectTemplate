@@ -2,4 +2,4 @@
 #include "texture.h"
 #include "sprite.h"
 
-void render(Overhead &overhead, Texture &texture, Sprite &sprite);
+void render(Editor &editor, Overhead &overhead, Texture &texture, Sprite &sprite);
