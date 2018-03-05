@@ -11,7 +11,6 @@
 #include "render.h"
 
 void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) {
-  accessData();
   setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName, editor);
   editor.texture.texture = NULL;
   editor.editorTexture.texture = NULL;
@@ -39,17 +38,19 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   setupTexture(editor.GUIOverhead, editor.editorTexture, w, h, path); //this is index 0
   path = "spawnBox.png";
   setupTexture(editor.GUIOverhead, editor.editorTexture, w, h, path); //this is index 1
-  accessComplete();
   bool quit = false;
   SDL_Event event;
+  std::string protectedType, actionType;
   while(!quit) {
     while(SDL_PollEvent(&event) != 0) {
       if(event.type == SDL_QUIT)
         quit = true;
     }
     SDL_RenderClear(editor.GUIOverhead.renderer);
+    protectedType = "sprite";
+    actionType = "render";
     for(int a = 0; a < scene.spriteNum; ++a) {
-      render(editor.GUIOverhead, editor.texture[scene.sprite[a].textureIndex] //continue
+      accessData(editor, scene, protectedType, actionType, a);
     }
     //define sprites for editorTextures! then render them too
     SDL_RenderPresent(editor.GUIOverhead.renderer);
