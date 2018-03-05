@@ -57,4 +57,5 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   //continue here
   //setup sprites in relation to scene in sprite setup - done
   //error in how data is accessed, this doesn't actually protect it at all! restructure
+  //also, forgot to do camera stuff and movement of camera
 }
