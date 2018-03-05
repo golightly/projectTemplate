@@ -17,7 +17,7 @@ void removeImage(Program &program) {
     Image* temp = new Image[program.imageNum];
     int b = 0;
     for(int a = 0; a <= program.imageNum; ++a) {
-        if(!a == atoi(program.sceneImagePath.c_str())) {
+        if(!(a == atoi(program.sceneImagePath.c_str()))) {
             temp[b].name = program.image[a].name;
             temp[b].path = program.image[a].path;
             temp[b].w = program.image[a].w;
@@ -33,4 +33,5 @@ void removeImage(Program &program) {
         program.image[a].w = temp[a].w;
         program.image[a].h = temp[a].h;
     }
+    delete [] temp;
 }

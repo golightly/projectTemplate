@@ -11,7 +11,7 @@ void removeScene(Program &program) {
   std::cout << "delete scene from hard drive(y/n): ";
   std::cin >> program.input;
   if(program.input == "y")
-    remove(program.scenePath[program.sceneImagePath.c_str()].c_str());
+    remove(program.scenePath[atoi(program.sceneImagePath.c_str())].c_str());
   std::string* temp = new std::string[program.sceneNum - 1];
   std::string* temp2 = new std::string[program.sceneNum - 1];
   int b = 0;
@@ -29,5 +29,8 @@ void removeScene(Program &program) {
     program.scenePath[a] = temp[a];
     program.sceneName = temp2[a];
   }
+  delete [] temp;
+  delete [] temp2;
+}
 
 //work on setupScene update next

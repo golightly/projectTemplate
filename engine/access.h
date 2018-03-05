@@ -1,5 +1,7 @@
 #pragma once
 
-void accessDate(Editor &editor);
+#include "editor.h"
+
+void accessData(Editor &editor);
 
 void accessComplete(Editor &editor);

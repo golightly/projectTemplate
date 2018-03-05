@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
-
+//don't change to float, would make file sizes way bigger!
 int main(int argc, char *argv[]) {
 	std::string path = argv[1];
 	std::string input;

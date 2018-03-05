@@ -2,7 +2,7 @@
 #include <mutex>
 #include "editor.h"
 
-void accessDate(Editor &editor) {
+void accessData(Editor &editor) {
   editor.mu.lock();
 }
 

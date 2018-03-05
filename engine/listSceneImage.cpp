@@ -15,13 +15,13 @@ void listSceneImage(Program &program) {
             }
         }
         else if(program.sceneNum >= 20) {
-            program.writeFile.open("list.txt");
+            program.writeFile.open("listScene.txt");
             for(int a = 0; a < program.sceneNum; ++a) {
                 program.writeFile << a << ": " << program.sceneName[a] << "\n";
             }
             program.writeFile.close();
             program.writeFile.clear();
-            ShellExecute(NULL, "open", "list.exe", NULL, NULL, SW_SHOWNORMAL); //this might need testing
+            ShellExecute(NULL, "open", "listScene.txt", NULL, NULL, SW_SHOWNORMAL); //this might need testing
         }
     }
     else if(program.input == "list-image") {
@@ -32,14 +32,14 @@ void listSceneImage(Program &program) {
             }
         }
         else if(program.imageNum >= 20) {
-            program.writeFile.open("list.txt");
+            program.writeFile.open("listImage.txt");
             for(int a = 0; a < program.imageNum; ++a) {
                 program.writeFile << a << ": " << program.image[a].name << "\n";
                 program.writeFile << "\t" << program.image[a].path << "\n";
             }
             program.writeFile.close();
             program.writeFile.clear();
-            ShellExecute(NULL, "open", "list.exe", NULL, NULL, SW_SHOWNORMAL); //this might need testing
+            ShellExecute(NULL, "open", "listImage.txt", NULL, NULL, SW_SHOWNORMAL); //this might need testing
         }
     }
 }

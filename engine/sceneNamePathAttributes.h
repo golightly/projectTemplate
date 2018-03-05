@@ -2,4 +2,4 @@
 
 #include "program.h"
 
-void sceneNamePathAttributes();
+void sceneNamePathAttributes(Program &program);

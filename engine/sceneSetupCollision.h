@@ -2,4 +2,4 @@
 
 #include "program.h"
 
-void sceneSetupColliion(Program &program);
+void sceneSetupCollision(Program &program);

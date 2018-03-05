@@ -6,16 +6,21 @@
 #include "scene.h"
 #include "program.h"
 #include "sprite.h"
+#include "sceneImage.h"
 
 void sceneImageNumSprite(Program &program) {
   std::getline(program.readFile, program.input);
   program.scene.sceneImageNum = atoi(program.input.c_str());
-  program.scene.image = new int[program.scene.sceneImageNum];
+  if(program.scene.sceneImageNum > 0)
+    program.scene.sceneImage = new SceneImage[program.scene.sceneImageNum];
   program.scene.spriteNum = 0;
   for(int a = 0; a < program.scene.sceneImageNum; ++a) {
     std::getline(program.readFile, program.input);
-    program.scene.image[a] = atoi(program.input.c_str());
-    program.scene.spriteNum += atoi(program.input.c_str());
+    program.scene.sceneImage[a].imagePath = atoi(program.input.c_str());
+    std::getline(program.readFile, program.input);
+    program.scene.sceneImage[a].numSprites = atoi(program.input.c_str());
+    program.scene.spriteNum += program.scene.sceneImage[a].numSprites;
   }
-  setupSprite(program);
+  if(program.scene.spriteNum > 0)
+    setupSprite(program);
 }

@@ -1,0 +1,140 @@
+#1 main.cpp
+main declares a new instance of the Program (2) class.
+main passes the program instance by reference to runSDK (4)
+
+#2 program.h
+program is a struct 
+contains ifstream (read) and ofstream (write) members
+contains input string for general input
+contains programpath string, received in newContinueSDK (5)
+contains programName string, received in setupProgram (3)
+contains programType string, indicates either opengl or dx12, received in setupProgram (3)
+contains commandType string, stores key command word ie. "rm-scene", reset in resetSDKData (6), received in sdkGetCommandPath (7)
+contains sceneImagePath string, stores second half of command ie. "myImage.png", reset in resetSDKData (6), received in sdkGetCommandPath (7)
+contains scenePath string pointer, stores all scene paths, initialised in runSDK (4), received in setupProgram (3), modified in removeScene (8), addScene (9) and exitSDK (15)
+contains sceneName string pointer, stores all scene names, initialised in runSDK (4), received in setupProgram (3), modified in removeScene (8) addScene (9) and exitSDK (15)
+contains sceneNum int, initialised in runSDK (4), received in setupProgram (3), modified in removeScene (8) and addScene (9)
+contains imageNum int, initialised in runSDK (4), received in setupProgram (3), modified in removeImage (10) and addImage (11)
+contains scene (16) instance pointer, intended to point to only one scene, initialised in runSDK (4), setup in setupScene (12), modified in closeScene (12)
+contains image (17) instance pointer, array of all image instances for program, initialised in runSDK (4), setup in setupProgram (3) and setupImage (14), modified in removeImage (10) addImage (11) and exitSDK (15)
+contains memblock char pointer, used whenever binary data is read from a file
+
+#3 program.cpp
+contains setupProgram
+checks if 0 index of input received in runSDK (4) is n or c
+if n, gets program name and type from user
+if c, gets program name, type, sceneNum, imageNum from .project file. calls setupImage (14) for each image in a for loop, fills in sceneName and scenePath arrays from two for loops getting data from the file
+
+#4 runSDK.cpp
+initialises sceneNum, imageNum, scene, image, scenePath and sceneName to NULL or 0
+calls newContinueSDK (5) which is passed program by reference
+declares quitSDK bool, sets to false
+while quitSDK is false, a while loop iterates through resetSDKData (6), sdkGetInput (18), and processSDKInput (19)
+all of these are passed program by reference.  processSDKInput (19) is also passed quitSDK by reference
+
+#5 newContinueSDK.cpp
+gets n or c followed by the project path, puts the path in programPath, stores the whole line in input
+calls setupProgram (3) passes it program by reference
+
+#6 resetSDKData.cpp
+if the scene is not null, calls closeScene (12)
+clears input, commandType and sceneImagePath
+
+#7 sdkGetCommandPath.cpp
+puts input into commandType using a for loop until it gets a usable command stored
+skips the dash and puts the rest of input into sceneImagePath
+
+#8 removeScene.cpp
+asks user if scene should also be deleted from the hard drive.
+if yes uses the remove function to delete the path stored in sceneImagePath
+removes one scene: adjusts sceneNum, scenePath and sceneName
+
+#9 addScene.cpp
+checks if any scene data is already stored
+requests a new scene path, scene name, width and height from the user.
+stores width and height in a new scene file named from the path given
+adjusts sceneNum
+
+#10 removeImage.cpp
+asks user if image should also be deleted from the hard drive
+if yes, uses the remove function to delete the path stored in sceneImagePath
+removes one image, adjusts image and imageNum
+
+#11 addImage
+checks if any image data is already stored
+requests a new image name and path.
+gets image width and height from image file using the path
+stores all data in a new member of the image array
+adjusts imageNum
+
+#12 scene.cpp
+contains setupScene.cpp
+contains closeScene
+setupScene declares a new scene with the scene pointer
+calls sceneNamePathAttributes (20)
+calls sceneImageNumSprite (21)
+calls sceneSetupCollision (22)
+calls sceneSetupSpawns (23)
+closeScene receives a scene by reference, and deletes all of its composite members and sets the scene pointer to null
+
+#13 
+
+#14 image.cpp
+contains setupImage
+works on one image array member per call
+gets image name and path from the project file
+gets the size and width from the image file
+
+#15 exitSDK.cpp
+receives the program and quitSDK by reference
+if image isn't null, deletes it
+if scenePath isn't null, deletes it
+if sceneName isn't null, deletes it
+sets all to null
+sets quitSDK to true
+
+#16 scene.h
+all composite members are deleted in closeScene
+contains sceneName string, setup in sceneNamePathAttributes (20)
+contains functionName string, setup in sceneNamePathAttributes (20)
+contains sceneAttributes SDL_Rect, setup in sceneNamePathAttributes (20)
+contains sceneImageNum int, number of images/textures required for the scene, setup in sceneImageNumSprite (21)
+contains image int pointer, index of images required for the scene, setup in sceneImageNumSprite 21)
+contains spriteNum int, setup in sceneImageNumSprite (21)
+contains sprite (24) instance pointer, setup in setupSprite (24)
+contains collisionNum int, setup in sceneSetupCollision (22)
+contains collisionAttributes SDL_Rect pointer, setup in sceneSetupCollision (22)
+contains spawnGroupNum int, stores first dimension size of spawnArea, setup in sceneSetupSpawns (23)
+contains spawnGroupSize pointer, stores second dimension size of spawnArea, setup in sceneSetupSpawns (23)
+contains spawnArea SDL_Rect 2d pointer, setup in sceneSetupSpawns (23)
+
+#17 image.h
+contains name string
+contains path string
+contains w uint16_t
+contains h uint16_t
+
+#18 sdkGetInput
+prints out the program name, the number of scenes and images, prompts user for a command and maybe an argument
+saves the user's input in input
+
+#19 processSDKInput
+receives program and quitSDK by reference
+if input is help, calls printHelp (13)
+if input is exit calls exitSDK (15), passes it program and quitSDK by reference
+if input is save, calls saveProject (24), passes it program by reference
+if input is list-scene or list-image, calls listSceneImage (25)
+otherwise (for commands that have arguments attached): 
+it calls sdkGetCommandPath and passes it program by reference
+calls sdkProcessCommand and passes it program by reference
+
+#20 sceneNamePathAtrributes
+gets the current scene name from the sceneName array, stores it in in sceneName in scene
+opens the scene file
+gets the functionName
+gets the sceneAttributes
+
+#21 sceneImageNumSprite
+gets sceneImageNum from the scene file
+sets up image in scene
+gets the indexes that go (error here! check file)
