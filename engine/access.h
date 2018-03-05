@@ -3,4 +3,4 @@
 #include "editor.h"
 #include "sprite.h"
 
-Sprite accessData(Editor &editor, int index);
+void accessData(Editor &editor, std::string protectedType, int index);
