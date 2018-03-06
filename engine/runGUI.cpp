@@ -101,3 +101,4 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
 //add editorFont to editor and font to program and setup a text struct for lines of text which will contain sprites
 //and setup one of these text objects for editor text and one for scene text.  the font in program will have to be
 //brought in for scene editing, also
+//add an option to add fonts
