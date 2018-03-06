@@ -76,6 +76,15 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
         accessData(editor, scene, protectedType, actionType, a);
       }
     }
+    protectedType = "editorSprite";
+    for(int a = 0; a < editor.editorSpriteNum; ++a) {
+      actionType = "checkPosition";
+      accessData(editor, scene, protectedType, actionType, a);
+      if(actionType == "true") {
+        actionType = "render";
+        accessData(editor, scene, protectedType, actionType, a);
+      }
+    }
     //define sprites for editorTextures! then render them too
     SDL_RenderPresent(editor.GUIOverhead.renderer);
   }
