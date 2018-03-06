@@ -7,7 +7,7 @@
 struct Text {
   std::string name;
   int fontIndex;
-  int* characterIndex; //the index of each character in the line of text, can range from space (0) to tilde (94)
+  int* characterIndex; //the index (as a char) of each character in the line of text, can range from space (0) to tilde (94)
   SDL_Rect lineAttributes;
   SDL_Rect* characterAttributes;
 };
