@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <thread>
 #include <functional>
+#include <sstream>
 #include "program.h"
 #include "scene.h"
 #include "image.h"
