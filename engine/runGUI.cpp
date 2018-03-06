@@ -98,3 +98,6 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
 
 //to do next: check if i missed anything in this, openScene and editorSpriteSetup.  then work on the mouse window which
 //will require an editor font.  so work on fonts in general
+//add editorFont to editor and font to program and setup a text struct for lines of text which will contain sprites
+//and setup one of these text objects for editor text and one for scene text.  the font in program will have to be
+//brought in for scene editing, also
