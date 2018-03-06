@@ -1,6 +1,7 @@
 #include "runGUI.h"
 #include <string>
 #include <SDL.h>
+#include <sstream>
 #include "editor.h"
 #include "scene.h"
 #include "overhead.h"
@@ -8,6 +9,8 @@
 #include "image.h"
 #include "access.h"
 #include "sceneImage.h"
+
+//this is gonna need to be split up
 
 void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) {
   setupOverhead(editor.GUIOverhead, editor.windowWidth, editor.windowHeight, windowName, editor);
@@ -23,7 +26,6 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
       path[a] = image[scene.sceneImage[a].imageIndex].path;
     }
     setupTexture(editor.GUIOverhead, editor.texture, w, h, path, scene.sceneImageNum);
-    
   }
   delete [] w;
   delete [] h;
@@ -31,8 +33,8 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   w = new int;
   h = new int;
   path = new std::string;
-  w = 50;
-  h = 50;
+  w = 500;
+  h = 500;
   path = "collisionBox.png";
   setupTexture(editor.GUIOverhead, editor.editorTexture, w, h, path); //this is index 0
   path = "spawnBox.png";
@@ -81,3 +83,4 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   //continue here
   //setup sprites in relation to scene in sprite setup - done
 }
+//make separate function for the editorSprite setup which is used from openScene
