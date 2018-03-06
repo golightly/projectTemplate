@@ -85,7 +85,7 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
       accessData(editor, scene, image, protectedType, actionType, a);
       if(actionType == "true") {
         actionType = "render";
-        accessData(editor, scene, image, protectedType, actionType, a);
+        accessData(editor, scene, protectedType, actionType, a);
       }
     }
     //define sprites for editorTextures! then render them too
