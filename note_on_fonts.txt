@@ -31,3 +31,5 @@ http://lazyfoo.net/tutorials/SDL/16_true_type_fonts/index.php
 https://www.libsdl.org/projects/SDL_ttf/docs/SDL_ttf.html
 
 https://stackoverflow.com/questions/8111239/read-pixels-from-sdl-surface-and-convert-to-color-values
+
+http://sdl.beuc.net/sdl.wiki/Pixel_Access
