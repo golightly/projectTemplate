@@ -4,6 +4,7 @@
 #include <string>
 #include "scene.h"
 #include "image.h"
+#include "font.h"
 
 struct Program {
     std::ifstream readFile;
@@ -11,9 +12,10 @@ struct Program {
     std::string input, programPath, programName, programType, commandType, sceneImagePath;
     std::string* scenePath; //stores ALL scene paths
     std::string* sceneName; //stores ALL scene names
-    int sceneNum, imageNum;
+    int sceneNum, imageNum, fontNum;
     Scene* scene;
     Image* image;
+    Font* font;
     char* memblock;
 };
 
