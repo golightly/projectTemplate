@@ -23,3 +23,11 @@ i saved to the snippets folder.  then unload the big character files.  this woul
 size required, but still more efficient than lots of giant images.
 
 make a separate program to test this.
+
+if that's unsatisfactory, could use the sdl truetype library and then extract the pixels for each character fed to it from a surface.  and then just use the pixels (would again require reusing for every different size).
+
+http://lazyfoo.net/tutorials/SDL/16_true_type_fonts/index.php
+
+https://www.libsdl.org/projects/SDL_ttf/docs/SDL_ttf.html
+
+https://stackoverflow.com/questions/8111239/read-pixels-from-sdl-surface-and-convert-to-color-values
