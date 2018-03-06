@@ -7,4 +7,4 @@ struct Font {
   Image* character;
 };
 
-void setupFont(std::string* path);
+void setupFont(std::string* path, int pathNum);
