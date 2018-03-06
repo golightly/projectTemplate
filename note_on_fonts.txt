@@ -35,3 +35,5 @@ https://stackoverflow.com/questions/8111239/read-pixels-from-sdl-surface-and-con
 http://sdl.beuc.net/sdl.wiki/Pixel_Access
 
 https://www.gamedev.net/forums/topic/636628-how-to-convert-to-rgba/
+
+try to find this on a site for free http://www.high-logic.com/font-editor/fontcreator.html
