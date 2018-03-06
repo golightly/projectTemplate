@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <cstdlib>
+#include <cstdint>
 #include "program.h"
 
 //sets up one image at a time
