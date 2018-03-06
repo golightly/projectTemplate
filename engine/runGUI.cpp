@@ -82,7 +82,7 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
     protectedType = "editorSprite";
     for(int a = 0; a < editor.editorSpriteNum; ++a) {
       actionType = "checkPosition";
-      accessData(editor, scene, image, protectedType, actionType, a);
+      accessData(editor, scene, protectedType, actionType, a);
       if(actionType == "true") {
         actionType = "render";
         accessData(editor, scene, protectedType, actionType, a);
