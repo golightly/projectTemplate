@@ -1,7 +1,6 @@
 #include "runGUI.h"
 #include <string>
 #include <SDL.h>
-#include <sstream>
 #include "editor.h"
 #include "scene.h"
 #include "overhead.h"
