@@ -18,7 +18,7 @@ struct Editor {
   Texture* editorTexture; //textures only used by the editor, ie. collision box representations
   int editorSpriteNum; //this should be setup right after scene setup
   Sprite* editorSprite; //this too
-  std::mutex spriteLock, sdl_lock;
+  std::mutex spriteLock, editorSpriteLok, sdl_lock;
   int cameraX, cameraY;
   //also have buttons and stuff for the editor only here
   //plan out how editing will actually work next
