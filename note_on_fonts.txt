@@ -1,0 +1,14 @@
+http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=iws-chapter08
+
+use this approach for fonts.  go through the program and change it to use a similar system.  ie. divide letters into distinct
+parts and write information describing how to represent each part.
+
+write a separate testing program for this, sdl should be fine, just fill in different sized textures with the same letter at
+different sizes to see how it scales.
+how to create a blank texture https://wiki.libsdl.org/SDL_CreateTexture
+
+hints here https://stackoverflow.com/questions/19107476/get-pixel-info-from-sdl2-texture
+
+then use this http://lazyfoo.net/tutorials/SDL/40_texture_manipulation/index.php
+
+
