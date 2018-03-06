@@ -12,3 +12,14 @@ hints here https://stackoverflow.com/questions/19107476/get-pixel-info-from-sdl2
 then use this http://lazyfoo.net/tutorials/SDL/40_texture_manipulation/index.php
 
 
+a better way to do it maybe: http://lazyfoo.net/tutorials/OpenGL/23_freetype_fonts/index.php
+
+though I don't like it.
+
+
+would be easier to just make a set of png files at the maximum size i'd need them, convert them to my format in the usual
+way with the script etc. and then use these images to create smaller pixel data in the program using the scaling algorithm
+i saved to the snippets folder.  then unload the big character files.  this would require a separate set of pixel data for every
+size required, but still more efficient than lots of giant images.
+
+make a separate program to test this.
