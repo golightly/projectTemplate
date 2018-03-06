@@ -37,3 +37,5 @@ http://sdl.beuc.net/sdl.wiki/Pixel_Access
 https://www.gamedev.net/forums/topic/636628-how-to-convert-to-rgba/
 
 try to find this on a site for free http://www.high-logic.com/font-editor/fontcreator.html
+
+use an opengl texture to display the resulting text from all this.  use the flappy bird code i already have for that i guess
