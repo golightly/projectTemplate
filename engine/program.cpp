@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "scene.h"
 #include "image.h"
+#include "font.h"
 
 void setupProgram(Program &program) {
     if(program.input[0] == 'n') {
@@ -35,6 +36,19 @@ void setupProgram(Program &program) {
         for(int a = 0; a < program.sceneNum; ++a) {
             std::getline(program.readFile, program.scenePath[a]);
         }
+        std::string** fontPath;
+        std::getline(program.readFile, program.fontNum);
+        fontPath = new std::string*[program.fontNum];
+        program.font = new Font[program.fontNum];
+        for(int a = 0; a < program.fontNum; ++a) {
+            fontPath[a] = new std::string[95];
+            for(int b = 0; b < 95; ++b) {
+                std::getline(program.readFile, fontPath[a][b]);
+            }
+            setupFont(program.font[a], fontPath[a]);
+            delete [] fontPath[a];
+        }
+        delete [] fontPath;
         program.readFile.close();
         program.readFile.clear();
     }
