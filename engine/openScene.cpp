@@ -38,6 +38,7 @@ void openScene(Program &program) {
   closeTexture(editor.mouseTexture);
   closeTexture(editor.editorTexture);
   closeScene(program.scene);
+  delete [] editorSprite;
   IMG_Quit();
   SDL_Quit();
 }
@@ -50,3 +51,4 @@ void openScene(Program &program) {
 //put the project file in with the rest of the project as it's needed
 //when scene is deleted, it shouold also delete sprites and other custom stuff
 //check program close to see if it closes everything properly
+//delete editor sprites
