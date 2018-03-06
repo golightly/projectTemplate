@@ -34,12 +34,12 @@ for (int f = 0; f < thumbheight; f++) // y on output
 }
 
 
-for downsizing images
+//for downsizing images, code is from https://stackoverflow.com/questions/9570895/image-downscaling-algorithm
 
 
 
-https://stackoverflow.com/questions/46124517/visual-studio-2017-windows-forms-how-to-set-exe-icon-visual-c
+//https://stackoverflow.com/questions/46124517/visual-studio-2017-windows-forms-how-to-set-exe-icon-visual-c
 
 
 
-how to set exe icon
+//how to set exe icon ^
