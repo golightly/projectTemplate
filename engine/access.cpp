@@ -30,6 +30,8 @@ void accessData(Editor &editor, Scene &scene. std::string &protectedType, std::s
       if((editor.editorSprite[index].attributes.x + editor.editorSprite[index].attributes.w) > editor.cameraX || editor.editorSprite[index].attributes.x < (editor.cameraX + editor.windowWidth)) {
         if((editor.editorSprite[index].attributes.y + editor.editorSprite[index].attributes.h) > editor.cameraY || editor.editorSprite[index].attributes.y < (editor.cameraY + editor.windowHeight))
           actionType = "true";
+      }
     }
+    editor.editorSpriteLock.unlock();
   }
 }
