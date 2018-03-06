@@ -38,6 +38,9 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   setupTexture(editor.GUIOverhead, editor.editorTexture, w, h, path); //this is index 0
   path = "spawnBox.png";
   setupTexture(editor.GUIOverhead, editor.editorTexture, w, h, path); //this is index 1
+  delete w;
+  delete h;
+  delete path;
   bool quit = false;
   SDL_Event event;
   std::string protectedType, actionType;
