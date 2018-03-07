@@ -20,11 +20,6 @@ void saveProject(Program &program) {
   for(int a = 0; a < program.sceneNum; ++a) {
     program.writeFile << program.scenePath[a] << "\n";
   }
-  program.writeFile << program.fontNum << "\n";
-  for(int a = 0; a < program.fontNum; ++a) {
-    program.writeFile << program.fontPath[a] << "\n";
-    program.writeFile << program.fontName[a] << "\n";
-  }
   program.writeFile.close();
   program.writeFile.clear();
 }
