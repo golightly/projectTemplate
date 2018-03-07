@@ -9,7 +9,7 @@ void setupFont(Font &font,int fontNum, std::string* path, std::string* fontName,
   font.fontName = new std::string[font.fontNum];
   for(int a = 0; a < font.fontNum; ++a) {
     font.fontName[a] = fontName[a];
-  }
+  } //restart here
   char* memblock;
   std::ifstream readFile;
   for(int a = 0; a < 95; ++a) {
