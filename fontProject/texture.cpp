@@ -55,11 +55,14 @@ void setupTexture(GLuint &texture, Shader &shader, int &width, int &height, floa
 			++a;
 		}
 	}
-	int textCount = 0;
-	for (int y = textY; y < (textY * 3) + (textH * 3); ++y) {
-		for (int x = textX * 3; x < (textX * 3) + ((textW * 3) - (textX * 3)); ++x) {
-			image[(y * (width * 3)) + (x * 3)] = text[textCount];
-			++textCount;
+	int startpos1, startpos2;
+	for(int y = 0; y < textH; ++y) {
+		for(int x = 0; x < textW; ++x) {
+			startpos1 = (((y + textY) * width) + (x + textX)) * 3;
+			startpos2 = ((y * textW) + x) * 3;
+			image[startpos1] = text[startpos2];
+			image[startpos1+1] = text[startpos2+1];
+			image[startPos1+2] = text[startPos2+2];
 		}
 	}
 	glActiveTexture(GL_TEXTURE0);
