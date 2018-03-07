@@ -1,10 +1,10 @@
 #pragma once
 
 #include <string>
-#include "image.h"
+#include "charset.h"
 
-struct Font {
-  Image* character;
+struct Font { //restructure font as a set of character sets, each with 95 characters, filled in when the scene is initialised
+  Charset* charset;
 };
 
 void setupFont(Font &font, std::string* path);
