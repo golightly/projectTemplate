@@ -4,8 +4,12 @@
 #include <cstdint>
 #include "image.h"
 
-void setupFont(Font &font, std::string* path) {
-  font.character = new Image[95];
+void setupFont(Font &font,int fontNum, std::string* path, std::string* fontName, int* charNum, int* charSize) {
+  font.fontNum = fontNum;
+  font.fontName = new std::string[font.fontNum];
+  for(int a = 0; a < font.fontNum; ++a) {
+    font.fontName[a] = fontName[a];
+  }
   char* memblock;
   std::ifstream readFile;
   for(int a = 0; a < 95; ++a) {
