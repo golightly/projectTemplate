@@ -22,9 +22,8 @@ void saveProject(Program &program) {
   }
   program.writeFile << program.fontNum << "\n";
   for(int a = 0; a < program.fontNum; ++a) {
-    for(int b = 0; b < 95; ++b) {
-      program.writeFile << program.font[a].character[b].path << "\n";
-    }
+    program.writeFile << program.fontPath[a] << "\n";
+    program.writeFile << program.fontName[a] << "\n";
   }
   program.writeFile.close();
   program.writeFile.clear();
