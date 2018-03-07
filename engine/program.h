@@ -12,6 +12,8 @@ struct Program {
     std::string input, programPath, programName, programType, commandType, sceneImagePath;
     std::string* scenePath; //stores ALL scene paths
     std::string* sceneName; //stores ALL scene names
+    std::string* fontPath;
+    std::string* fontName;
     int sceneNum, imageNum, fontNum;
     Scene* scene;
     Image* image;
