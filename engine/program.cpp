@@ -36,19 +36,14 @@ void setupProgram(Program &program) {
         for(int a = 0; a < program.sceneNum; ++a) {
             std::getline(program.readFile, program.scenePath[a]);
         }
-        std::string** fontPath;
-        std::getline(program.readFile, program.fontNum);
-        fontPath = new std::string*[program.fontNum];
-        program.font = new Font[program.fontNum];
+        std::getline(program.readFile, program.input);
+        program.fontNum = atoi(program.input.c_str());
+        program.fontPath = new std::string[program.fontNum];
+        program.fontName = new std::string[program.fontNum];
         for(int a = 0; a < program.fontNum; ++a) {
-            fontPath[a] = new std::string[95];
-            for(int b = 0; b < 95; ++b) {
-                std::getline(program.readFile, fontPath[a][b]);
-            }
-            setupFont(program.font[a], fontPath[a]);
-            delete [] fontPath[a];
+            std::getline(program.readFile, program.fontPath[a]);
+            std::getline(program.readFile, program.fontName[a]);
         }
-        delete [] fontPath;
         program.readFile.close();
         program.readFile.clear();
     }
