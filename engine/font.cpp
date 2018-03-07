@@ -51,3 +51,15 @@ void setupFont(Font &font,int fontNum, std::string* path, std::string* fontName,
     }
   }
 }
+
+//closes all fonts
+void closeFont(Font &font) {
+  delete [] font.fontName;
+  for(int a = 0; a < font.fontNum; ++a) {
+    for(int b = 0; b < font.charset[a].charNum; ++b) {
+      delete [] font.charset[a].character[b].pixels;
+    }
+    delete [] font.charset[a].character;
+  }
+  delete [] font.charset;
+}
