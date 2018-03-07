@@ -17,7 +17,6 @@ struct Program {
     int sceneNum, imageNum, fontNum;
     Scene* scene;
     Image* image;
-    Font* font;
     char* memblock;
 };
 
