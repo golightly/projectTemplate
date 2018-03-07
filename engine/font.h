@@ -13,7 +13,7 @@ struct Font { //restructure font as a set of character sets, each with 95 charac
 //setup all fonts at once
 void setupFont(Font &font, int fontNum,  std::string* path, std::string fontName, int* charNum, int* charSize, SDL_Color* colour);
 
-void closeFont();
+void closeFont(Font &font);
 
 //move font to scene!
 
