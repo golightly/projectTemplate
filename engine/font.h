@@ -11,7 +11,7 @@ void setupFont(Font &font, int fontNum,  std::string* path, int* charNum, int* c
 
 //move font to scene!
 
-//Font* font;
+//Font font;
 
 //something like this
 
