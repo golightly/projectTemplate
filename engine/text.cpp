@@ -7,7 +7,5 @@ void setupText(Text &text, Font &font, std::string name, int fontIndex, std::str
   for(int a = 0; a < line.size(); ++a) {
     characterIndex[a] = line[a] - 32;
   }
-  //decide on a base size for all characters, they are not necessarily all the same size, gonna need to do that
-  //at home or otherwise with an art program
-  //then work on integrating this with scene setup and scene closing and make sure to do all this for the editor too
+  //work on integrating this with scene setup and scene closing and make sure to do all this for the editor too
 }
