@@ -55,14 +55,20 @@ void setupTexture(GLuint &texture, Shader &shader, int &width, int &height, floa
 			++a;
 		}
 	}
-	int textCount = 0;
-	for (int y = textY; y < (textY * 3) + (textH * 3); ++y) {
-		for (int x = textX * 3; x < (textX * 3) + ((textW * 3) - (textX * 3)); ++x) {
-			image[(y * (width * 3)) + (x * 3)] = text[textCount];
-			++textCount;
+	int startpos1, startpos2;
+	for(int y = 0; y < textH; ++y) {
+		for(int x = 0; x < textW; ++x) {
+			startpos1 = (((y + textY) * width) * 3) + ((x + textX) * 3);
+			startpos2 = ((y * textW) *4) + (x * 4);
+			if (text[startpos2 + 3] != 0.0) {
+				image[startpos1] = text[startpos2];
+				image[startpos1 + 1] = text[startpos2 + 1];
+				image[startpos1 + 2] = text[startpos2 + 2];
+			}
 		}
 	}
 	glActiveTexture(GL_TEXTURE0);
+	//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_FLOAT, image);
 	glUniform1i(glGetUniformLocation(shader.shaderProgram, "texSampler"), 0);
