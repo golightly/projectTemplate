@@ -75,6 +75,7 @@ int main(int argc, char* args[]) {
 	}
 	delete[] image;
 	delete[] letter;
+	TTF_CloseFont(font);
 	TTF_Quit();
 	shutdown(overhead, texture, shader, texAttribute);
 	return 0;
