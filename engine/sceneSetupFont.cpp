@@ -37,4 +37,9 @@ void sceneSetupFont(Program &program) {
     colour[a].b = atoi(program.input.c_str());
   }
   setupFont(program.scene.font, fontNum, path, fontName, charNum, charSize, colour);
+  delete [] fontName;
+  delete [] path;
+  delete [] charNum;
+  delete [] charSize;
+  delete [] colour;
 }
