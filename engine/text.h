@@ -13,3 +13,5 @@ struct Text {
 };
 
 void setupText(Text &text, Font &font, std::string name, int fontIndex, std::string line);
+
+void closeText(Text* text, int sceneTextNum);
