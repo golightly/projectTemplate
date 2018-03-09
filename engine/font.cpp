@@ -23,25 +23,26 @@ void setupFont(Font &font,int fontNum, std::string* path, std::string* fontName,
       SDL_Surface* surface;
       char letter[1];
       letter[0] = b + 32;
-      surface = TTF_RenderText_Blended(newFont, letter, colour[a]);
+      surface = TTF_RenderText_Solid(newFont, letter, colour[a]);
+      SDL_SetSurfaceAlphaMod(surface, 255);
       font.charset[a].character[b].width = surface->w;
       font.charset[a].character[b].height = surface->h;
-      font.charset[a].character[b].pixels = new float[(surface->w * surface->h) * 4];
+      font.charset[a].character[b].pixels = new unsigned char[(surface->w * surface->h) * 4];
       int count = 0;
       Uint8 red, green, blue, alpha;
       SDL_LockSurface(surface);
       Uint8* p = (Uint8*)surface->pixels;
       for(int y = 0; y < surface->h; ++y) {
         for(int x = 0; x < surface->w; ++x) {
-          Uint32 pixel = p[(y * surface->w) + x];
+          Uint8 pixel = p[(y * surface->pitch) + x];
           SDL_GetRGBA(pixel, surface->format, &red, &green, &blue, &alpha);
-          font.charset[a].character[b].pixels[count] = ((float)red / 255.0f);
+          font.charset[a].character[b].pixels[count] = red;
           ++count;
-          font.charset[a].character[b].pixels[count] = ((float)green / 255.0f);
+          font.charset[a].character[b].pixels[count] = green;
           ++count;
-          font.charset[a].character[b].pixels[count] = ((float)blue / 255.0f);
+          font.charset[a].character[b].pixels[count] = blue;
           ++count;
-          font.charset[a].character[b].pixels[count] = ((float)alpha / 255.0f);
+          font.charset[a].character[b].pixels[count] = alpha;
           ++count;
         }
       }
