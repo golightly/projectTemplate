@@ -21,10 +21,12 @@ int main(int argc, char* args[]) {
 	Shader shader(getVertexSource(), getFragmentSource());
 	setupShader(shader);
 	TTF_Font *font;
+	char* letter = new char[1];
+	letter[0] = 97;
 	font = TTF_OpenFont("VarianeScript.ttf", 50);
 	SDL_Surface* surface;
 	SDL_Color color = { 255, 0, 0 };
-	surface = TTF_RenderText_Solid(font, "testing", color);
+	surface = TTF_RenderText_Solid(font, letter, color);
 	SDL_SetSurfaceAlphaMod(surface, 255);
 	int surfaceWidth = surface->w;
 	int surfaceHeight = surface->h;
@@ -72,6 +74,7 @@ int main(int argc, char* args[]) {
 		SDL_GL_SwapWindow(overhead.window);
 	}
 	delete[] image;
+	delete[] letter;
 	TTF_Quit();
 	shutdown(overhead, texture, shader, texAttribute);
 	return 0;
