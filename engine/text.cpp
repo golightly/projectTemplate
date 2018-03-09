@@ -1,6 +1,6 @@
 #include "text.h"
 
-void setupText(Text &text, std::string name, int fontIndex, std::string line) {
+void setupText(Text &text, Font &font, std::string name, int fontIndex, std::string line) {
   text.name = name;
   text.fontIndex = fontIndex;
   characterIndex = new int[line.size()];
