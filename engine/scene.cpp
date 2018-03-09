@@ -20,6 +20,7 @@ void setupScene(Program &program) {
     sceneSetupCollision(program);
     sceneSetupSpawns(program);
     sceneSetupFont(program);
+    sceneSetupText();
     program.readFile.close();
     program.readFile.clear();
     //will require a lot more once characters and stuff added
@@ -35,6 +36,7 @@ void closeScene(Scene &scene) {
     delete [] scene.spawnArea;
     delete [] scene.spawnGroupSize;
     closeFont(scene.font);
+    closeText(scene.text, scene.sceneTextNum);
     delete scene;
     scene = NULL;
 }
