@@ -72,6 +72,7 @@ int main(int argc, char* args[]) {
 		SDL_GL_SwapWindow(overhead.window);
 	}
 	delete[] image;
+	TTF_Quit();
 	shutdown(overhead, texture, shader, texAttribute);
 	return 0;
 }
