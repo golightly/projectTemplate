@@ -1,3 +1,5 @@
 #pragma once
 
-void sceneSetupFont();
+#include "program.h"
+
+void sceneSetupFont(Program &program);
