@@ -19,6 +19,7 @@ void setupScene(Program &program) {
     sceneImageNumSprite(program);
     sceneSetupCollision(program);
     sceneSetupSpawns(program);
+    sceneSetupFont(program);
     program.readFile.close();
     program.readFile.clear();
     //will require a lot more once characters and stuff added
