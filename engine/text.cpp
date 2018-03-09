@@ -9,3 +9,11 @@ void setupText(Text &text, Font &font, std::string name, int fontIndex, std::str
   }
   //work on integrating this with scene setup and scene closing and make sure to do all this for the editor too
 }
+
+void closeText(Text* text, int sceneTextNum) {
+  for(int a = 0; a < sceneTextNum; ++a) {
+    delete [] text[a].characterIndex;
+    delete [] text[a].characterAttributes;
+  }
+  delete [] text;
+}
