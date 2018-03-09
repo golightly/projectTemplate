@@ -11,6 +11,7 @@
 #include "sceneSetupCollision.h"
 #include "sceneSetupSpawns.h"
 #include "sceneImage.h"
+#include "font.h"
 
 void setupScene(Program &program) {
     program.scene = new Scene;
@@ -32,6 +33,7 @@ void closeScene(Scene &scene) {
     }
     delete [] scene.spawnArea;
     delete [] scene.spawnGroupSize;
+    closeFont(scene.font);
     delete scene;
     scene = NULL;
 }
