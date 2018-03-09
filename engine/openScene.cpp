@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <cstdlib>
 #include <thread>
 #include <functional>
@@ -39,6 +40,7 @@ void openScene(Program &program) {
   closeTexture(editor.editorTexture);
   closeScene(program.scene);
   delete [] editorSprite;
+  TTF_Quit();
   IMG_Quit();
   SDL_Quit();
 }
