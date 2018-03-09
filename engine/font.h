@@ -1,10 +1,19 @@
 #pragma once
 
 #include <string>
-#include "image.h"
+#include <SDL.h>
+#include <SDL_ttf.h>
+#include "charset.h"
 
-struct Font {
-  Image* character;
+struct Font { //restructure font as a set of character sets, each with 95 characters, filled in when the scene is initialised
+  Charset* charset;
+  std::string* fontName;
+  int fontNum;
 };
+//setup all fonts at once
+void setupFont(Font &font, int fontNum,  std::string* path, std::string fontName, int* charNum, int* charSize, SDL_Color* colour);
 
-void setupFont(Font &font, std::string* path);
+void closeFont(Font &font);
+
+//move font to scene!
+
