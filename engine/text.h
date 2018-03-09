@@ -12,4 +12,4 @@ struct Text {
   SDL_Rect* characterAttributes;
 };
 
-void setupText(Text &text, std::string name, int fontIndex, std::string line);
+void setupText(Text &text, Font &font, std::string name, int fontIndex, std::string line);
