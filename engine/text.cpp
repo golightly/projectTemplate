@@ -15,5 +15,6 @@ void closeText(Text* text, int sceneTextNum) {
     delete [] text[a].characterIndex;
     delete [] text[a].characterAttributes;
   }
-  delete [] text;
+  if(sceneTextNum > 0)
+    delete [] text;
 }
