@@ -6,6 +6,7 @@
 #include "sprite.h"
 #include "sceneImage.h"
 #include "text.h"
+#include "font.h"
 
 //will require a lot more
 struct Scene {
@@ -23,6 +24,7 @@ struct Scene {
     int* spawnGroupSize; //spawn groups can have different sizes, respresents size of second dimension in spawnArea
     SDL_Rect** spawnArea; //spawn areas.  first dimension is spawn groups, then second dimension is specific attributes to spawn at
     //to be added, characters, and other stuff I'm sure
+    Font font;
     Text* text; //all lines of text in the scene
 };
 
