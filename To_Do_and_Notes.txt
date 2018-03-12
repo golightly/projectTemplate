@@ -1,0 +1,14 @@
+note: fonts won't work with letters that are meant to link together.  Not really a problem? When would I really use handwriting
+style fonts anyway?
+
+set up editor fonts and text
+
+set up ui (can contain text, images, buttons, can be rendered or not, are constrained to the editor window's dimensions,
+can pause the rest of the scene, use function typedef thingy for the buttons)
+
+set up ui for scenes and the editor (in the editor's case, just for the mouse window)
+
+scaling shouldn't be necessary for scenes.  everything will just be larger and the camera will be smaller.  ui will probably
+need some sort of scaling though, if it is bound to the screen instead of the scene world.
+so, make ui that is bound to the screen use percentages instead of pixels for size, and use the downscaling algorithm on any images
+and text.
