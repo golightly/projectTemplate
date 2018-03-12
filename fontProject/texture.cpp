@@ -77,7 +77,6 @@ void setupTexture(GLuint &texture, Shader &shader, int &width, int &height, unsi
 		}
 	}
 	glActiveTexture(GL_TEXTURE0);
-	//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glUniform1i(glGetUniformLocation(shader.shaderProgram, "texSampler"), 0);
