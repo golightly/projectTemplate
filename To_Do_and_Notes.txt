@@ -13,3 +13,23 @@ need some sort of scaling though, if it is bound to the screen instead of the sc
 so, make ui that is bound to the screen use percentages instead of pixels for size, and use the downscaling algorithm on any images and text.
 
 actually, scaling might be necessary for scene objects.  add a percentage attribute to text and image stuff in scene
+
+set a top resolution for the scene (usually 1920 x 1080) and if the program's window resolution is smaller than that apply a percentage of downscaling to all text and images being used.
+
+scaling algorithm will not work for this because it assumes the image is monochrome and other stuff.
+
+write a program for testing scaling
+
+also rotation still needs to be implemented
+
+and scene and image bundling
+
+and audio
+
+and the command line editor and mouse window
+
+use the command line to place objects in the scene and edit them
+
+first thing though, write a separate image scaling project, then one for rotation.  using opengl.
+
+try using this for image resizing (called resampling, apparently) http://www.cplusplus.com/forum/general/2615/
