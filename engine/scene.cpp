@@ -11,6 +11,7 @@
 #include "sceneSetupCollision.h"
 #include "sceneSetupSpawns.h"
 #include "sceneImage.h"
+#include "font.h"
 
 void setupScene(Program &program) {
     program.scene = new Scene;
@@ -18,6 +19,8 @@ void setupScene(Program &program) {
     sceneImageNumSprite(program);
     sceneSetupCollision(program);
     sceneSetupSpawns(program);
+    sceneSetupFont(program);
+    sceneSetupText(program);
     program.readFile.close();
     program.readFile.clear();
     //will require a lot more once characters and stuff added
@@ -32,6 +35,8 @@ void closeScene(Scene &scene) {
     }
     delete [] scene.spawnArea;
     delete [] scene.spawnGroupSize;
+    closeFont(scene.font);
+    closeText(scene.text, scene.sceneTextNum);
     delete scene;
     scene = NULL;
 }

@@ -1,6 +1,7 @@
 #include "overhead.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <cstdint>
 #include <string>
 #include "texture.h"
@@ -12,6 +13,7 @@ void setupOverhead(Overhead &overhead, int w, int h, std::string windowName, Edi
         SDL_Init(SDL_INIT_VIDEO);
         overhead.imgFlags = IMG_INIT_PNG;
         IMG_Init(overhead.imgFlags);
+        TTF_Init();
     }
     editor.sdl_lock.unlock();
     overhead.window = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);

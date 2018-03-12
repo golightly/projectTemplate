@@ -39,3 +39,13 @@ void runGUI(std::string windowName, Editor &editor, Scene &scene, Image* image) 
   //continue here
   //setup sprites in relation to scene in sprite setup
 }
+<<<<<<< HEAD
+=======
+//make separate function for the editorSprite setup which is used from openScene
+
+//to do next: check if i missed anything in this, openScene and editorSpriteSetup.  then work on the mouse window which
+//add editorFont and text for both of the graphical windows
+//work on splitting this up and revising it also
+//text for the scene will need to be access protected.  fonts too
+//also work on mutexes because at the moment one can be locked twice at the same time, which is an error
+>>>>>>> 8358202b63d210e06fabf51cafe8dd69951caad0

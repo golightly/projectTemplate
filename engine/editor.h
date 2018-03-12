@@ -6,19 +6,18 @@
 #include "overhead.h"
 #include "scene.h"
 #include "texture.h"
-#include "sprite.h"
 
 //put all the sdl and scene editing stuff here
 struct Editor {
   Overhead GUIOverhead, mouseOverhead;
   int windowWidth, windowHeight;
   std::string savePath;
+  SDL_Event event;
+  bool quitEditor;
   Texture* texture;
   Texture* mouseTexture; //mouse window uses different textures not intended for the scene
   Texture* editorTexture; //textures only used by the editor, ie. collision box representations
-  int editorSpriteNum; //this should be setup right after scene setup
-  Sprite* editorSprite; //this too
-  std::mutex spriteLock, editorSpriteLock, sdl_lock;
+  std::mutex mu, sdl_lock;
   int cameraX, cameraY;
   //also have buttons and stuff for the editor only here
   //plan out how editing will actually work next
