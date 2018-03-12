@@ -1,5 +1,5 @@
-int thumbwidth = 15;
-int thumbheight = 15;
+int thumbwidth = 15; //change to be an int rounding of a percentage of the size of the full image
+int thumbheight = 15; //same as above, obviously
 double xscale = (thumbwidth+0.0) / width;
 double yscale = (thumbheight+0.0) / height;
 double threshold = 0.5 / (xscale * yscale);
@@ -26,7 +26,7 @@ for (int f = 0; f < thumbheight; f++) // y on output
                 double xportion = 1.0;
                 if (x == (int)xstart) xportion -= xstart - x;
                 if (x == (int)xend) xportion -= x+1 - xend;
-                sum += picture4[y][x] * yportion * xportion;
+                sum += picture4[y][x] * yportion * xportion; 
             }
         }
         picture3[f][g] = (sum > threshold) ? 1 : 0;
