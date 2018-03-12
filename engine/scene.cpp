@@ -10,6 +10,7 @@
 #include "sceneNamePathAttributes.h"
 #include "sceneSetupCollision.h"
 #include "sceneSetupSpawns.h"
+#include "sceneSetupFont.h"
 #include "sceneImage.h"
 #include "font.h"
 
