@@ -15,6 +15,7 @@ void exitSDK(Program &program, bool &quitSDK) {
         delete [] program font[a].character;
     }
     delete [] program.font;
+    program.font = NULL;
     program.image = NULL;
     program.scenePath = NULL;
     program.sceneName = NULL;
