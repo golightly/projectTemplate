@@ -18,7 +18,6 @@ void setupText(Text &text, Font &font, std::string name, int fontIndex, std::str
     text.lineAttributes.w += text.characterAttributes[a].w;
     text.lineAttributes.h += text.characterAttributes[a].h;
   }
-  //work on integrating this with scene setup and scene closing and make sure to do all this for the editor too
 }
 
 void closeText(Text* text, int sceneTextNum) {
