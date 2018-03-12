@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "scene.h"
 #include "image.h"
-#include "font.h"
 
 void setupProgram(Program &program) {
     if(program.input[0] == 'n') {

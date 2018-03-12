@@ -4,7 +4,6 @@
 #include <string>
 #include "scene.h"
 #include "image.h"
-#include "font.h"
 
 struct Program {
     std::ifstream readFile;

@@ -4,8 +4,6 @@
 #include <SDL_image.h>
 #include <cstdlib>
 #include <thread>
-#include <functional>
-#include <sstream>
 #include "program.h"
 #include "scene.h"
 #include "image.h"
@@ -14,14 +12,12 @@
 #include "runMousePosWindow.h"
 #include "runCmdLineEditor.h"
 #include "texture.h"
-#include "editorSpriteSetup.h"
 
 void openScene(Program &program) {
   //scene already loaded, so it doesn't need to know which scene is loaded, except for saving purposes
   //use editor to store all the sdl and editing scene related stuff
   //have editor also store the path to save to, for simplicity
   Editor editor;
-  editorSpriteSetup(editor, scene);
   std::cout << "width of editor window: ";
   std::cin >> editor.windowWidth;
   std::cout << "height of editor window: ";
@@ -29,16 +25,15 @@ void openScene(Program &program) {
   editor.savePath = program.scenePath[atoi(program.sceneImagePath.c_str())];
   std::string windowName = "Scene Editor: ";
   windowName += program.scene.sceneName;
-  std::thread editorGUI(runGUI, windowName, std::ref(editor), std::ref(program.scene), std::ref(program.image));
-  std::thread mousePosWindow(runMousePosWindow, std::ref(editor));
-  runCmdLineEditor(editor, std::ref(program.scene), std::ref(program.image));
+  std::thread editorGUI(runGUI, windowName, editor, program.scene, program.image);
+  std::thread mousePosWindow(runMousePosWindow, editor);
+  runCmdLineEditor(editor, program.scene, program.image);
   editorGUI.join();
   mousePosWindow.join();
   closeTexture(editor.texture);
   closeTexture(editor.mouseTexture);
   closeTexture(editor.editorTexture);
   closeScene(program.scene);
-  delete [] editorSprite;
   IMG_Quit();
   SDL_Quit();
 }
@@ -51,4 +46,3 @@ void openScene(Program &program) {
 //put the project file in with the rest of the project as it's needed
 //when scene is deleted, it shouold also delete sprites and other custom stuff
 //check program close to see if it closes everything properly
-//delete editor sprites

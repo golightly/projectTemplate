@@ -1,6 +1,6 @@
 #pragma once
 //all characters should be rgba
 struct Character {
-  float* pixels;
+  unsigned char* pixels;
   int width, height;
 };
