@@ -33,3 +33,6 @@ use the command line to place objects in the scene and edit them
 first thing though, write a separate image scaling project, then one for rotation.  using opengl.
 
 try using this for image resizing (called resampling, apparently) http://www.cplusplus.com/forum/general/2615/
+
+
+first write a program that tests what happens if two images of pixel data are displayed at different resolutions to study
