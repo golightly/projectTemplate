@@ -11,6 +11,7 @@
 #include "sceneSetupCollision.h"
 #include "sceneSetupSpawns.h"
 #include "sceneSetupFont.h"
+#include "sceneSetupText.h"
 #include "sceneImage.h"
 #include "font.h"
 
