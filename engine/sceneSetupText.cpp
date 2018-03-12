@@ -19,6 +19,6 @@ void sceneSetupText(Program &program) {
     fontIndex = atoi(program.input.c_str());
     std::getline(program.readFile, name);
     std::getline(program.readFile, line);
-    setupText(program.scene.text, program.scene.font, name, fontIndex, line);
+    setupText(program.scene.text[a], program.scene.font, name, fontIndex, line);
   }
 }
