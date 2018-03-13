@@ -2,4 +2,7 @@ make an ad on /r/gamedevclassifieds, google search "how to get on a game dev tea
 
 tidy up my github, add some readmes.  add my finished snake game
 
-Software Tools Developer proficient in C/C++.  Experienced in SDL2 and SFML. Some experience with openGL,web development, UE4, Unity and Python.  Hourly Rate: $10/hour. Portfolio: https://github.com/trashviolent Contact: nlouiscanning@gmail.com
+Software Tools Developer proficient in C/C++.  Experienced in SDL2 and SFML. 
+Some experience with openGL,web development, UE4, Unity and Python.  
+Hourly Rate: $10/hour. 
+Portfolio: https://github.com/trashviolent Contact: nlouiscanning@gmail.com
