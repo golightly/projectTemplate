@@ -48,8 +48,8 @@ void setupFont(Font &font,int fontNum, std::string* path, std::string* fontName,
       }
       SDL_UnlockSurface(surface);
       SDL_FreeSurface(surface);
-      TTF_CloseFont(newFont);
     }
+    TTF_CloseFont(newFont);
   }
 }
 
