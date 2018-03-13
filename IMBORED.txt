@@ -1,6 +1,5 @@
 make an ad on /r/gamedevclassifieds, google search "how to get on a game dev team".
 
-tidy up my github, add some readmes.
+tidy up my github, add some readmes.  add my finished snake game
 
-Programmer proficient with C/C++.  Experienced with SDL2. Some experience with openGL.  Some experience with web development 
-and Python.
+Software Tools Developer proficient in C/C++.  Experienced in SDL2 and SFML. Some experience with openGL,web development, UE4, Unity and Python.  Hourly Rate: $10/hour. Portfolio: https://github.com/trashviolent Contact: nlouiscanning@gmail.com
