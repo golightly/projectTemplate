@@ -12,7 +12,7 @@ void sceneNamePathAttributes(Program &program) {
   std::getline(program.readFile, program.scene.functionName); //will be NULL FUNCTION PATH the first time
   std::getline(program.readFile, program.input);
   program.scene.sceneAttributes.w = atoi(program.input.c_str());
-  std::getline(program.readFile, program.inpit);
+  std::getline(program.readFile, program.input);
   program.scene.sceneAttributes.h = atoi(program.input.c_str());
   program.scene.sceneAttributes.x = 0;
   program.scene.sceneAttributes.y = 0;
