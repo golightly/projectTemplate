@@ -22,4 +22,4 @@ for a in range(w):
 	for b in range(h):
 		file2.write(pixelArray[a][b])
 file2.close()
-#subprocess.check_call(["editFile.exe", str(output), str(w), str(h)])
+subprocess.check_call(["editFile.exe", str(output), str(w), str(h)])
