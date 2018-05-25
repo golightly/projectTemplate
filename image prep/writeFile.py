@@ -1,6 +1,6 @@
 import subprocess
 from PIL import Image
-path = raw_input("file name: ")
+path = raw_input("file name (minus extension (assumes png)): ")
 inputPath = path + ".png"
 outputPath = path + ".img"
 file = Image.open(inputPath)
